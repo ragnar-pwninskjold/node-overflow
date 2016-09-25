@@ -1,0 +1,115 @@
+
+
+.table-bordered {
+	border-radius: 25px;
+}
+
+.panel {
+	float: left;
+	border: 3px solid transparent;
+	border-radius: 10px;
+	margin-top: 15px;
+}
+
+.panel-default {
+	border-color: #ddd;
+	margin-top: 30px;
+
+}
+
+.result h1, h2, h3 {
+	margin-top: 10px;
+	font-family: 'Noto Sans', sans-serif;
+	color: #c0caca;
+	clear: both;
+}
+
+.verticalLine {
+    border-left: solid black;
+    border-right: solid black;
+
+}
+
+.buttons {
+	float: right;
+	margin-top: 25px;
+	margin-right: 25px;
+}
+
+.inputbox {
+	text-align: center;
+	display: block;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+input {
+	text-align: center;
+	/*outline-style: solid;*/
+	/*outline-color: black;*/
+	background-color: white;
+	font-size: 3rem;
+	border-radius: 20px;
+
+}
+
+input:focus {
+	outline: none;
+}
+
+.container {
+	width: 75%;
+	margin-bottom: 10px;
+}
+
+#percentChange {
+	color: green;
+}
+
+.news {
+	clear: both;
+}
+
+.result {
+	padding: 0;
+}
+
+.intro {
+	text-align: center;
+}
+
+.test {
+	text-align: center;
+}
+
+.chart2 {
+	max-width: 725px;
+	max-height: 300px;
+	margin: 0 auto;
+	margin-bottom: 20px;
+}
+
+.chart-left {
+	display: inline-block;
+	float: left;
+}
+
+.chart-left {
+	display: inline-block;
+	float: right;
+}
+
+.chart-left h1 {
+	margin-top: 0px;
+}
+
+.chart-right h1 {
+	margin-top: 0px;
+}
+
+.buy-it {
+	position: absolute;
+	top: 80px;
+	right: 60px;
+}
+

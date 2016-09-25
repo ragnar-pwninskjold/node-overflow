@@ -2,16 +2,115 @@
 <html>
 <head>
 	<title>FinApp | Builder</title>
-	
-   
+	<link rel="stylesheet" type="text/css" href="/static/normalize.css"></link>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"></link>
+	<link rel="stylesheet" type="text/css" href="/static/main.css"></link>
+	<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700" rel="stylesheet">
 </head>
 <body>
-<div class="container">
+<!-- Start navbar -->
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/profile">Profile</a>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/builder">Builder <span class="sr-only">(current)</span></a></li>
+        <li><a href="/feed">Feed</a></li>
+      </ul>
+      <form class="navbar-form navbar-left">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" id="search-term">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/logout">Logout</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<!-- End navbar -->
 
-<input type="text" id="search-term">
-    
+<div class="container">
+<!-- id for input should be 'search-term' -->
+<div class="container result">
+	<div class="container intro">
+		<h1>Apple Inc.</h1>
+		<h2>AAPL</h2>
+		<h3>$120.67 <span id="percentChange"> (+.03%)</span></h3>
+	</div>
+	<div class="buy-it">
+		<button name="buy-button" id="buy-button">Buy this stock</button>
+	</div>
+	
+	
+	<div id='chart'>
+		<canvas id='lineChart1'></canvas>
+	</div>
+		
 </div>
+<div class="panel panel-default">
+	<table class="table table-hover table-condensed table-bordered">
+	<tr>
+		<th>Name</th>
+		<th>Value</th>
+		<th>Meaning</th>
+	</tr>
+	<tr>
+		<td>Price-earnings Ratio</td>
+		<td>xxx</td>
+		<td>This data point represents the price you pay for every $1 dollar in earnings. Most investors want this number to be low, meaning you aren't paying a lot to earn money</td>
+	
+	</tr>
+	<tr>
+		<td>Debt-to-Equity</td>
+		<td>xxx</td>
+		<td>This number shows how much debt a company holds relative to how much they're worth. When this number increases, a company tends to become less-able to meet its debt obligations</td>
+	
+	</tr>
+	<tr>
+		<td>Return on Equity</td>
+		<td>xxx</td>
+		<td>Return on Equity tells you how much a company rewards you for each share you hold. You want this to be high</td>
+	</tr>
+	<tr>
+		<td>Return on Assets</td>
+		<td>xxx</td>
+		<td>This number defines how well a company uses its assets to make money. Like Return on Equity, you want this to be high - it means a company can do a lot with what it has</td>
+	</tr>
+	<tr>
+		<td>Current Ratio</td>
+		<td>xxx</td>
+		<td>This data point shows you if a company can pay its short-term liabilities with the assets it has on hands. If this number is less than 0, a company has more short-term debts than short-term assets, which could be dangerous if something goes wrong </td>
+	</tr>
+	<tr>
+		<td>Asset Turnover Ratio</td>
+		<td>xxx</td>
+		<td>This number is similar to Return on Assets. If it is higher, it means a company is good at using its assets to make more money</td>
+	</tr>
+	</table>
+</div>
+	<div class="container news">
+			<h1>News related to Apple</h1>
+			<h4>Title: </h4>
+			<h6>Date: </h6>
+			<h5>Summary: </h5>
+	</div>
+	
+</div>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.bundle.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-<script src="../main.js"></script>
+<script src="/static/main.js"></script>
 </body>
 </html>

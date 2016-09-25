@@ -18,7 +18,7 @@ mongoose.connect(configDB.url); //connect to the DB
 
 require('./config/passport')(passport); // pass passport for configuration
 
-
+app.use('/static', express.static(__dirname + '/public'));
 app.use(morgan('dev')); //this will log all requests to console
 app.use(cookieParser()); //reading cookies for authentication
 app.use(bodyParser());
@@ -29,6 +29,7 @@ app.use(session({secret: "idk"}));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
+
 
 //set up routes
 

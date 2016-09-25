@@ -1,40 +1,335 @@
-<!doctype html>
-<html>
-<head>
-    <title>Node Authentication</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-    <style>
-        body        { padding-top:80px; word-wrap:break-word; }
-    </style>
-</head>
-<body>
-<div class="container">
+<!DOCTYPE html>
+<html lang="en">
+    <head>                        
+        <title>Fintacy</title>            
+        
+        <!-- META SECTION -->
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+        <!-- END META SECTION -->
+        <!-- CSS INCLUDE -->   
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"></link>     
+        <link rel="stylesheet" href="/static/css/styles.css">
 
-    <div class="page-header text-center">
-        <h1><span class="fa fa-anchor"></span> Profile Page</h1>
-        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
-        <a href="/builder" class="btn btn-default btn-sm">Builder</a>
-    </div>
+        <!-- EOF CSS INCLUDE -->
+    </head>
+    <body>        
+        
+        <!-- APP WRAPPER -->
+        <div class="app">           
 
-    <div class="row">
-
-        <!-- LOCAL INFORMATION -->
-        <div class="col-sm-6">
-            <div class="well">
-                <h3><span class="fa fa-user"></span> Local</h3>
-
-                    <p>
-                        <strong>id</strong>: <%= user._id %><br>
-                        <strong>email</strong>: <%= user.local.email %><br>
-                        <strong>password</strong>: <%= user.local.password %>
-                    </p>
-
+            <!-- START APP CONTAINER -->
+            <div class="app-container">
+                
+                
+                <!-- START APP CONTENT -->
+                <div class="app-content">
+                    <!-- Start navbar -->
+                    <nav class="navbar navbar-inverse">
+                      <div class="container-fluid">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                          </button>
+                          <a class="navbar-brand" href="/profile">Profile</a>
+                        </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                          <ul class="nav navbar-nav">
+                            <li class="active"><a href="/builder">Builder <span class="sr-only">(current)</span></a></li>
+                            <li><a href="/feed">Feed</a></li>
+                          </ul>
+                          <ul class="nav navbar-nav navbar-right">
+                            <li><a href="/logout">Logout</a></li>
+                          </ul>
+                        </div><!-- /.navbar-collapse -->
+                      </div><!-- /.container-fluid -->
+                    </nav>
+                    <!-- End navbar -->
+                    
+                    <!-- START PAGE HEADING -->
+                    <div class="app-heading app-heading-bordered app-heading-page">
+                        <div class="icon icon-lg">
+                            <span class="icon-laptop-phone"></span>
+                        </div>
+                        <div class="title">
+                            <h1>FinApp - This is your portfolio</h1>
+                        </div>               
+                        
+                    </div>
+                   
+                    <!-- END PAGE HEADING -->
+                    
+                    <!-- START PAGE CONTAINER -->
+                    <div class="container">
+                                                
+                        <div class="row">
+                            <div class="col-md-3">
+    
+                                <ul class="app-feature-gallery app-feature-gallery-noshadow margin-bottom-0">
+                                    <li>
+                                        <!-- START WIDGET -->
+                                        <div class="app-widget-tile">
+                                            <div class="line">
+                                                <div class="title">Portfolio Value</div>
+                                                <div class="title pull-right"><span class="label label-success label-ghost label-bordered">+1.2%</span></div>
+                                            </div>                                        
+                                            <div class="intval">$9,427</div>                                        
+                                        </div>                                                                        
+                                        <!-- END WIDGET -->
+                                    </li>
+                                    <li>
+                                        <!-- START WIDGET -->
+                                        <div class="app-widget-tile">
+                                            <div class="line">
+                                                <div class="title"># of Stocks You Own</div>
+                                            </div>                                        
+                                            <div class="intval">5</div>
+                                    
+                                        </div>                                                                        
+                                        <!-- END WIDGET -->
+                                    </li>
+                                    <li>
+                                    </li>
+                                </ul>
+                                
+                            </div>
+                            <div class="col-md-3">
+                                
+                                <ul class="app-feature-gallery app-feature-gallery-noshadow margin-bottom-0">
+                                    <li>
+                                        <!-- START WIDGET -->
+                                        <div class="app-widget-tile app-widget-highlight">
+                                            <div class="line">
+                                                <div class="title">Daily Performance</div>
+                                            </div>                                        
+                                            <div class="intval">+.03%</div>
+                                        </div>
+                                        <!-- END WIDGET -->
+                                    </li>
+                                    <li>
+                                        <!-- START WIDGET -->
+                                        <div class="app-widget-tile app-widget-highlight">
+                                            <div class="line">
+                                                <div class="title">Weekly Performance</div>
+                                            </div>                                        
+                                            <div class="intval">+1.1%</div>
+                                        </div>
+                                        <!-- END WIDGET -->
+                                    </li>
+                                   
+                                </ul>
+                                                                
+                            </div>
+                            <div class="col-md-3">
+                                
+                                <ul class="app-feature-gallery app-feature-gallery-noshadow margin-bottom-0">
+                                    <li>                                        
+                                        <!-- START WIDGET -->
+                                        <div class="app-widget-tile app-widget-highlight">
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <div class="icon icon-lg">
+                                                        <span class="icon-bubble"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-8">                                                    
+                                                    <div class="line">
+                                                        <div class="title">AAPL</div>         
+                                                        <div class="title pull-right"><span class="label label-success label-ghost label-bordered">+1.2%</span></div>
+                                                    </div>                                        
+                                                    <div class="intval text-left">$187.97</div>                                        
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- END WIDGET -->                                        
+                                    </li>
+                                    <li>                                        
+                                        <!-- START WIDGET -->
+                                        <div class="app-widget-tile app-widget-highlight">
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <div class="icon icon-lg">
+                                                        <span class="icon-bubble"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-8">                                                    
+                                                    <div class="line">
+                                                        <div class="title">GOOGL</div>         
+                                                        <div class="title pull-right"><span class="label label-success label-ghost label-bordered">+.01%</span></div>
+                                                    </div>                                        
+                                                    <div class="intval text-left">$800.12</div>                                        
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- END WIDGET -->                                         
+                                    </li>
+                                    <li>                                        
+                                        <!-- START WIDGET -->
+                                        <div class="app-widget-tile app-widget-highlight">
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <div class="icon icon-lg">
+                                                        <span class="icon-bubble"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-8">                                                    
+                                                    <div class="line">
+                                                        <div class="title">MSFT</div>         
+                                                        <div class="title pull-right"><span class="label label-success label-ghost label-bordered">-1.1%</span></div>
+                                                    </div>                                        
+                                                    <div class="intval text-left">$150.12</div>                                        
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- END WIDGET -->                                        
+                                    </li>
+                                    
+                                </ul>
+                                
+                            </div>
+                            
+                            
+                        <div class="row">
+                            <div class="col-md-6">
+                                
+                                <!-- START PRODUCT SALES HISTORY -->
+                                <div class="block block-condensed">
+                                    <div class="app-heading">                                        
+                                        <div class="title">
+                                            <h2>Portfolio Performance</h2>
+                                            <p>Year to Date % Change in Value</p>
+                                        </div>              
+                                        
+                                    </div>
+                                    
+                                    <div class="block-content">
+                                        <div class="app-chart-wrapper app-chart-with-axis">
+                                           <div id='chart'>
+                                            <canvas id='lineChart1'></canvas>
+                                          </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- END PRODUCT SALES HISTORY -->
+                                
+                            </div>
+                            <div class="col-md-6">
+                                
+                                <!-- START LATEST TRANSACTIONS -->
+                                <div class="block block-condensed">
+                                    <div class="app-heading">                                        
+                                        <div class="title">
+                                            <h2>Latest Transactions</h2>
+                                            <p>Quick information</p>
+                                        </div>              
+                                        <div class="heading-elements">
+                                            <button class="btn btn-default btn-icon-fixed"><span class="icon-file-add"></span> All Transactions</button>
+                                        </div>
+                                    </div>
+                                    <div class="block-content">
+                                        <div class="table-responsive">
+                                            <table class="table table-clean-paddings margin-bottom-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Stock</th>
+                                                        <th width="150">Volume</th>                                                    
+                                                        <th width="150">Status</th>
+                                                        <th width="55"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="contact contact-rounded contact-bordered contact-lg">
+                                                                <img src="assets/images/users/user_2.jpg">
+                                                                <div class="contact-container">
+                                                                    <a href="#">AAPL</a>
+                                                                    <span>on July 13, 2016</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>50 Shares</td>
+                                                        <td><span class="label label-success label-bordered">Buy Order</span></td>
+                                                    
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="contact contact-rounded contact-bordered contact-lg">
+                                                                <img src="assets/images/users/user_3.jpg">
+                                                                <div class="contact-container">
+                                                                    <a href="#">GOOGL</a>
+                                                                    <span>on July 12, 2016</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>10 Shares</td>
+                                                        <td><span class="label label-warning label-bordered">Sell Order</span></td>                                                    
+                                                    
+                                                    </tr>                                                
+                                                                                                 
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- END LATEST TRANSACTIONS -->
+                                
+                            </div>
+                        </div>
+                        
+                        
+                        
+                    </div>
+                    <!-- END PAGE CONTAINER -->
+                    
+                </div>
+                <!-- END APP CONTENT -->
+                                
             </div>
-        </div>
-
-    </div>
-
-</div>
-</body>
+            <!-- END APP CONTAINER -->
+                        
+          
+            
+            <!-- APP OVERLAY -->
+            <div class="app-overlay"></div>
+            <!-- END APP OVERLAY -->
+        </div>        
+        <!-- END APP WRAPPER -->                
+        
+        <!-- IMPORTANT SCRIPTS -->
+        <script type="text/javascript" src="/static/js/vendor/jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="/static/js/vendor/jquery/jquery-migrate.min.js"></script>
+        <script type="text/javascript" src="/static/js/vendor/jquery/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="/static/js/vendor/bootstrap/bootstrap.min.js"></script>
+        <script type="text/javascript" src="/static/js/vendor/moment/moment.min.js"></script>
+        <script type="text/javascript" src="/static/js/vendor/customscrollbar/jquery.mCustomScrollbar.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.bundle.js"></script>
+<script src="/static/main.js"></script>
+        <!-- END IMPORTANT SCRIPTS -->
+        <!-- THIS PAGE SCRIPTS -->
+        <script type="text/javascript" src="/static/js/vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.js"></script>
+        
+        <script type="text/javascript" src="/static/js/vendor/jvectormap/jquery-jvectormap.min.js"></script>
+        <script type="text/javascript" src="/static/js/vendor/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+        <script type="text/javascript" src="/static/js/vendor/jvectormap/jquery-jvectormap-us-aea-en.js"></script>
+        
+        <script type="text/javascript" src="/static/js/vendor/rickshaw/d3.v3.js"></script>
+        <script type="text/javascript" src="/static/js/vendor/rickshaw/rickshaw.min.js"></script>
+        <!-- END THIS PAGE SCRIPTS -->
+        <!-- APP SCRIPTS -->
+        <script type="text/javascript" src="/static/js/app.js"></script>
+        <script type="text/javascript" src="/static/js/app_plugins.js"></script>
+        <script type="text/javascript" src="/static/js/app_demo.js"></script>
+        <!-- END APP SCRIPTS -->
+        <script type="text/javascript" src="/static/js/app_demo_dashboard.js"></script>
+    </body>
 </html>

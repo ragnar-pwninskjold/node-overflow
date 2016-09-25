@@ -1,0 +1,278 @@
+<!doctype html>
+<html>
+<head>
+	<title>FinApp | Builder</title>
+	<link rel="stylesheet" type="text/css" href="/static/normalize.css"></link>
+	<link rel="stylesheet" type="text/css" href="/static/main.css"></link>
+  <link rel="stylesheet" href="/static/css/styles.css"></link>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"></link>
+
+</head>
+<body>
+<!-- Start navbar -->
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/profile">Profile</a>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/builder">Builder <span class="sr-only">(current)</span></a></li>
+        <li><a href="/feed">Feed</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/logout">Logout</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<!-- End navbar -->
+
+
+
+
+
+
+
+<div class="page-header text-center">
+        <h1> Feed </h1>
+</div>        
+        <!-- APP WRAPPER -->
+        <div class="app">           
+
+            <!-- START APP CONTAINER -->
+            <div class="app-container">                                
+                
+                
+                <!-- START APP CONTENT -->
+                <div class="app-content app-sidebar-left">
+        
+                    <!-- START PAGE SEPARATED CONTAINER -->
+                      
+                        <div class="app-content-separate-content">
+                            <!-- CONTENT CONTAINER -->
+                            <div class="container">
+                                
+                                <div class="row">
+                                    <div class="col-lg-8 col-md-6">
+                                        
+                                        
+                                        <div class="block block-condensed padding-top-20">
+                                            <div class="block-content">
+                                                <div class="form-group">
+                                                    <textarea name="text" class="form-control" placeholder="Your message..." rows="3"></textarea>
+                                                </div>                                            
+                                                <div class="form-group">
+                                                
+                                                    
+                                                    <button class="btn btn-default btn-icon-fixed pull-right"><span class="fa fa-paper-plane"></span> Post Message</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="app-timeline">
+                                            
+                                            <div class="app-timeline-item">
+                                                <div class="user"><img src="assets/images/users/user_1.jpg" alt="Taylor Watson"></div>
+                                                <div class="content">
+                                                    <div class="title"><a href="#">Taylor Watson</a> posted comment to <strong>Awesome article</strong></div>
+                                                    <p>Praesent <strong>tellus elit</strong>, efficitur sit amet ex id, euismod auctor risus. <strong>Nullam a arcu tincidunt</strong>, ultrices nulla vitae, porta est.</p>
+                                                    <p>
+                                                        <a href="#" class="text-muted margin-right-10"><span class="fa fa-comment"></span> Comments</a>
+                                                        <a href="#" class="text-muted margin-right-10"><span class="fa fa-share-alt"></span> Share</a>
+                                                        <a href="#" class="text-muted"><span class="fa fa-bullhorn"></span> Report</a> 
+                                                        
+                                                        <span class="pull-right text-muted"><i class="fa fa-clock-o"></i> 5 min ago</span>                                                                                                                
+                                                    </p>
+                                                    <div class="comments">
+                                                        <div class="total">3 Comments for this post</div>
+                                                        <div class="comment">
+                                                            <div class="contact contact-rounded contact-lg">
+                                                                <img src="assets/images/users/user_7.jpg">
+                                                                <div class="contact-container">
+                                                                    <a href="#">Jared Stevens</a>
+                                                                    <span>Hey! This is really awesome thing... Wha do you think about it?</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="comment">
+                                                            <div class="contact contact-rounded contact-lg">
+                                                                <img src="assets/images/users/user_4.jpg">
+                                                                <div class="contact-container">
+                                                                    <a href="#">Lilu Dallas</a>
+                                                                    <span>Multi-pasport...</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="comment">
+                                                            <div class="contact contact-rounded contact-lg">
+                                                                <img src="assets/images/users/user_6.jpg">
+                                                                <div class="contact-container">
+                                                                    <a href="#">Corben Dallas</a>
+                                                                    <span>Wow... nice! Like like like...</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form">
+                                                            <div class="form-group">
+                                                                <div class="input-group">
+                                                                    <input type="text" class="form-control" placeholder="Your comment...">
+                                                                    <div class="input-group-btn">
+                                                                        <button class="btn btn-default">Post Comment</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>                                                
+                                            </div>
+                                            
+                                            <div class="app-timeline-item">
+                                                <div class="user"><img src="assets/images/users/user_2.jpg" alt="Jessie Franklin"></div>
+                                                <div class="content">
+                                                    <div class="title"><a href="#">Jessie Franklin</a> commented <strong>New York City photo</strong></div>                                                    
+                                                    <p>Mauris tempor semper viverra. <strong>Aliquam laoreet malesuada</strong> nisl, fringilla accumsan mi condimentum a. <a href="#">Nullam lacinia egestas</a>. Proin iaculis malesuada mi, quis <a href="#">@Iaculis</a> magna tristique sed.</p>
+                                                    <p>
+                                                        <a href="#" class="text-muted margin-right-10"><span class="fa fa-comment"></span> Comments</a>
+                                                        <a href="#" class="text-muted margin-right-10"><span class="fa fa-share-alt"></span> Share</a>
+                                                        <a href="#" class="text-muted"><span class="fa fa-bullhorn"></span> Report</a> 
+
+                                                        <span class="pull-right text-muted"><i class="fa fa-clock-o"></i> 12 min ago</span>
+                                                    </p> 
+                                                    
+                                                    <div class="comments">
+                                                        <div class="total">1 Comments for this post</div>                                                        
+                                                        <div class="comment">
+                                                            <div class="contact contact-rounded contact-lg">
+                                                                <img src="assets/images/users/user_8.jpg">
+                                                                <div class="contact-container">
+                                                                    <a href="#">Mary Londro</a>
+                                                                    <span>I saw this place tomorrow... really beautiful place!</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>                                                        
+                                                        <div class="form">
+                                                            <div class="form-group">
+                                                                <div class="input-group">
+                                                                    <input type="text" class="form-control" placeholder="Your comment...">
+                                                                    <div class="input-group-btn">
+                                                                        <button class="btn btn-default">Post Comment</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>                                                
+                                            </div>
+                                            
+                                            <div class="app-timeline-more">
+                                                <a href="#">...</a>
+                                            </div>
+                                            
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                                        
+                                        <div class="block">
+                                            <div class="app-heading app-heading-small">                                
+                                                <div class="title">
+                                                    <h3>Friend Finder</h3>
+                                                </div>             
+                                                <div class="heading-elements visible-lg-block">
+                                                    <a href="#" class="btn btn-primary btn-clean">Search</a>
+                                                </div>
+                                            </div> 
+                                            
+                                            <div class="contact contact-rounded contact-bordered contact-lg status-online">
+                                                <img src="assets/images/users/user_1.jpg">
+                                                <div class="contact-container">
+                                                    <a href="#">John Doe</a>
+                                                    <span>2 min ago</span>
+                                                </div>
+                                               
+                                            </div>
+                                            <div class="contact contact-rounded contact-bordered contact-lg status-online">
+                                                <img src="assets/images/users/user_2.jpg">
+                                                <div class="contact-container">
+                                                    <a href="#">Juan Obrien</a>
+                                                    <span>15 hours ago</span>
+                                                </div>
+                                               
+                                            </div>
+                                            <div class="contact contact-rounded contact-bordered contact-lg status-online">
+                                                <img src="assets/images/users/user_3.jpg">
+                                                <div class="contact-container">
+                                                    <a href="#">Erin Stewart</a>
+                                                    <span>2 days ago</span>
+                                                </div>
+                                                
+                                            </div>
+                                            <div class="contact contact-rounded contact-bordered contact-lg status-online">
+                                                <img src="assets/images/users/user_4.jpg">
+                                                <div class="contact-container">
+                                                    <a href="#">Elaine Harper</a>
+                                                    <span>2 days ago</span>
+                                                </div>
+                                               
+                                            </div>
+                                            <div class="contact contact-rounded contact-bordered contact-lg status-away">
+                                                <img src="assets/images/users/user_5.jpg">
+                                                <div class="contact-container">
+                                                    <a href="#">Chester Vargas</a>
+                                                    <span>Month ago</span>
+                                                </div>
+                                              
+                                            </div>
+                                            
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- END CONTENT CONTAINER -->
+                        </div>
+                    </div>
+                    <!-- END PAGE SEPARATED CONTAINER -->
+                    
+                </div>
+                <!-- END APP CONTENT -->
+                                
+            </div>
+            <!-- END APP CONTAINER -->                                    
+                                    
+
+  
+            
+            <!-- APP OVERLAY -->
+            <div class="app-overlay"></div>
+            <!-- END APP OVERLAY -->
+        </div>        
+        <!-- END APP WRAPPER -->                
+        
+        <!-- IMPORTANT SCRIPTS -->
+        <script type="text/javascript" src="js/vendor/jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="js/vendor/jquery/jquery-migrate.min.js"></script>
+        <script type="text/javascript" src="js/vendor/jquery/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="js/vendor/bootstrap/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/vendor/moment/moment.min.js"></script>
+        <script type="text/javascript" src="js/vendor/customscrollbar/jquery.mCustomScrollbar.min.js"></script>
+        <!-- END IMPORTANT SCRIPTS -->
+        <!-- APP SCRIPTS -->
+        <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="js/app_plugins.js"></script>
+        <script type="text/javascript" src="js/app_demo.js"></script>
+        <!-- END APP SCRIPTS -->
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+<script src="/static/main.js"></script>
+</body>
+</html>

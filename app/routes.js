@@ -48,6 +48,12 @@ module.exports = function(app, passport) {
 		});
 	});
 
+	app.get('/feed', isLoggedIn, function(req, res) {
+		res.render('feed.ejs', {
+			user: req.user
+		});
+	});
+
 	function isLoggedIn(req, res, next) {
 		if (req.isAuthenticated()) {
 			return next();
