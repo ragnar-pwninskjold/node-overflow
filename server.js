@@ -16,6 +16,7 @@ var configDB = require('./config/database.js');
 
 mongoose.connect(configDB.url); //connect to the DB
 
+
 require('./config/passport')(passport); // pass passport for configuration
 
 app.use('/static', express.static(__dirname + '/public'));

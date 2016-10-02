@@ -113,3 +113,6 @@ input:focus {
 	right: 60px;
 }
 
+.templates {
+	display: none;
+}

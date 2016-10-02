@@ -1,74 +1,96 @@
-//var Chart = require('chart.js');
+var company;
+var name;
+var price;
+var ticker;
+var ratios;
 
 $(document).ready(function() {
-
+//console.log(db);
 	$('input').keypress(function(e) {
+
 		if (e.which == 13) {
-			var query = $('#search-term').val();
-			companyCall(query);
-			console.log(query);
+			e.preventDefault();
+			var query = $('#searchBox').val();
+			$.get('/api/'+query, function(data) {
+				console.log(data);
+				name = data.name;
+				price = data.price;
+				ticker = data.ticker;
+				ratios = data.ratios;
+				change = data.change;
+				$("#companyName").text(name);
+				$("#companyTicker").text(ticker);
+				$("#currentPrice").text(price);
+				if (change>=0) {
+					$("#percentChange").text("(+"+change+"%)").css("color", "green");
+				}
+				else{
+					$("#percentChange").text("(-"+change+"%)").css("color", "red");
+				}
+				$("#pe").text(ratios[0]);
+				$("#de").text(ratios[1]);
+				$("#roe").text(ratios[2]);
+				$("#roa").text(ratios[3]);
+				$("#currentratio").text(ratios[4]);
+				$("#assetturnover").text(ratios[5]);
+			});
 		}
 	});
 
-	var chart = document.getElementById("lineChart1");
-	makePriceGraph(chart);
-	//charts to make:
-	//line graph
-	//bar chart
-	//PE ratio
-	//ROE
-	//
-	
+	$("#buy-button").on("click", function() {
+		var amount = prompt("How many shares?");
+		console.log(amount);
+		console.log(company);
+		$.post('/positions', {company: company, amount: amount}, function(data, status) {
+			console.log(data);
+			console.log(status);
+		});
+	});
+
+
+
 
 
 });
 
 
 
-function companyCall(query) {
-	var params = {
-		query: query
-	};
 
-	$.ajax({
-		url: "https://api.intrinio.com/companies",
-		data: params,
-		type: "GET",
-		beforeSend: function (xhr) {
-    xhr.setRequestHeader ("Authorization", "Basic " + btoa('cd725aeff27764a813a3bbc012ac5498' + ":" + '50fb06eb45c050dfccd377d68bf9a039'));
-},
-
-	})
-	.done(function(result) {
-		console.log(result);
-	});
-};
-
-function makePriceGraph(chart) {
+function makePriceGraph(chart, obj) {
+	console.log(obj);
+	lbl = [];
+	pric = [];
+	for (var i = 0; i < 5; i++) {
+		lbl.push(obj.data[i].date);
+		pric.push(obj.data[i].value);
+		
+	}
+	lbl = lbl.reverse();
+	console.log(lbl);
+	console.log(pric);
 	var graph = new Chart(chart, {
 		type: 'line',
 		data: {
+			labels: lbl,
 			datasets: [{
-				label: 'Scatter Dataset',
+				label: 'Historical Stock Price',
 				data: [{
-					x: -10,
-					y: 0 
+					x: 1,
+					y: pric[4] 
 				}, {
-					x: 0,
-					y: 10
+					x: 2,
+					y: pric[3]
 				}, {
-					x: 10,
-					y: 5
+					x: 3,
+					y: pric[2]
+				}, {
+					x: 4,
+					y: pric[1] 
+				}, {
+					x: 5,
+					y: pric[0]
 				}]
 			}]
-		},
-		options: {
-			scales: {
-				xAxes: [{
-					type: 'linear',
-					position: 'bottom'
-				}]
-			}
 		}
 	});
 
