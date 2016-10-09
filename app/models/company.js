@@ -7,7 +7,9 @@ var companySchema = mongoose.Schema({
 	priceTime: Date,
 	timeSeries:[{}],
 	ratios:[Number],
-	change: Number
+	change: Number,
+	news:[{}],
+	sector: String
 },
 {
 	timestamps: true

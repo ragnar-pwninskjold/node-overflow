@@ -1,9 +1,12 @@
 var mongoose = require('mongoose');
 
 var historySchema = mongoose.Schema({
-	ticker: String,
-	orderType: String,
-	volume: Number
+	name: String,
+	orderType: String, //buy or sell
+	volume: Number,
+	user: String,
+	entryPrice: Number,
+	posId: String
 },
 {
 	timestamps: true

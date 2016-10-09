@@ -27,7 +27,7 @@
                                                 <div class="title">Portfolio Value</div>
                                                 <div class="title pull-right"><span class="label label-success label-ghost label-bordered">+1.2%</span></div>
                                             </div>                                        
-                                            <div class="intval">$9,427</div>                                        
+                                            <div class="intval"><span class="pVal">$9,427</span></div>                                        
                                         </div>                                                                        
                                         <!-- END WIDGET -->
                                     </li>
@@ -35,9 +35,9 @@
                                         <!-- START WIDGET -->
                                         <div class="app-widget-tile">
                                             <div class="line">
-                                                <div class="title"># of Stocks You Own</div>
+                                                <div class="title"># of Positions You Hold</div>
                                             </div>                                        
-                                            <div class="intval">5</div>
+                                            <div class="intval"><span class="numpos">5</span></div>
                                     
                                         </div>                                                                        
                                         <!-- END WIDGET -->
@@ -76,7 +76,8 @@
                             </div>
                             <div class="col-md-3">
                                 
-                                <ul class="app-feature-gallery app-feature-gallery-noshadow margin-bottom-0">
+                                <ul class="app-feature-gallery app-feature-gallery-noshadow margin-bottom-0 positionsUl">
+                                
                                     <li>                                        
                                         <!-- START WIDGET -->
                                         <div class="app-widget-tile app-widget-highlight">
@@ -88,55 +89,16 @@
                                                 </div>
                                                 <div class="col-sm-8">                                                    
                                                     <div class="line">
-                                                        <div class="title">AAPL</div>         
-                                                        <div class="title pull-right"><span class="label label-success label-ghost label-bordered">+1.2%</span></div>
+                                                        <div class="title">Company</div>         
+                                                        <div class="title pull-right"><span class="label label-success label-ghost label-bordered"># of Shares</span></div>
                                                     </div>                                        
-                                                    <div class="intval text-left">$187.97</div>                                        
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- END WIDGET -->                                        
-                                    </li>
-                                    <li>                                        
-                                        <!-- START WIDGET -->
-                                        <div class="app-widget-tile app-widget-highlight">
-                                            <div class="row">
-                                                <div class="col-sm-4">
-                                                    <div class="icon icon-lg">
-                                                        <span class="icon-bubble"></span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-8">                                                    
-                                                    <div class="line">
-                                                        <div class="title">GOOGL</div>         
-                                                        <div class="title pull-right"><span class="label label-success label-ghost label-bordered">+.01%</span></div>
-                                                    </div>                                        
-                                                    <div class="intval text-left">$800.12</div>                                        
+                                                    <div class="intval text-left">$ Value</div>                                        
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- END WIDGET -->                                         
                                     </li>
-                                    <li>                                        
-                                        <!-- START WIDGET -->
-                                        <div class="app-widget-tile app-widget-highlight">
-                                            <div class="row">
-                                                <div class="col-sm-4">
-                                                    <div class="icon icon-lg">
-                                                        <span class="icon-bubble"></span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-8">                                                    
-                                                    <div class="line">
-                                                        <div class="title">MSFT</div>         
-                                                        <div class="title pull-right"><span class="label label-success label-ghost label-bordered">-1.1%</span></div>
-                                                    </div>                                        
-                                                    <div class="intval text-left">$150.12</div>                                        
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- END WIDGET -->                                        
-                                    </li>
+                                  
                                     
                                 </ul>
                                 
@@ -144,9 +106,9 @@
                             
                             
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 
-                                <!-- START PRODUCT SALES HISTORY -->
+                                <!-- START PORTFOLIO PERFORMANCE -->
                                 <div class="block block-condensed">
                                     <div class="app-heading">                                        
                                         <div class="title">
@@ -158,82 +120,140 @@
                                     
                                     <div class="block-content">
                                         <div class="app-chart-wrapper app-chart-with-axis">
-                                           <div id='chart'>
-                                            <canvas id='lineChart1'></canvas>
+                                           <div id='portfolio-chart'>
+                                            <canvas id='portfolioperformance'></canvas>
                                           </div>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- END PRODUCT SALES HISTORY -->
+                                <!-- END PORTFOLIO PERFORMANCE -->
                                 
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 
-                                <!-- START LATEST TRANSACTIONS -->
+                                <!-- START SECTOR BREAKDOWN -->
                                 <div class="block block-condensed">
                                     <div class="app-heading">                                        
                                         <div class="title">
-                                            <h2>Latest Transactions</h2>
-                                            <p>Quick information</p>
+                                            <h2>Portfolio Breakdown</h2>
+                                            <p>Breakdown of your portfolio by sector</p>
                                         </div>              
-                                        <div class="heading-elements">
-                                            <button class="btn btn-default btn-icon-fixed"><span class="icon-file-add"></span> All Transactions</button>
-                                        </div>
+                                        
                                     </div>
+                                    
                                     <div class="block-content">
-                                        <div class="table-responsive">
-                                            <table class="table table-clean-paddings margin-bottom-0">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Stock</th>
-                                                        <th width="150">Volume</th>                                                    
-                                                        <th width="150">Status</th>
-                                                        <th width="55"></th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="contact contact-rounded contact-bordered contact-lg">
-                                                                <img src="assets/images/users/user_2.jpg">
-                                                                <div class="contact-container">
-                                                                    <a href="#">AAPL</a>
-                                                                    <span>on July 13, 2016</span>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>50 Shares</td>
-                                                        <td><span class="label label-success label-bordered">Buy Order</span></td>
-                                                    
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="contact contact-rounded contact-bordered contact-lg">
-                                                                <img src="assets/images/users/user_3.jpg">
-                                                                <div class="contact-container">
-                                                                    <a href="#">GOOGL</a>
-                                                                    <span>on July 12, 2016</span>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>10 Shares</td>
-                                                        <td><span class="label label-warning label-bordered">Sell Order</span></td>                                                    
-                                                    
-                                                    </tr>                                                
-                                                                                                 
-                                                </tbody>
-                                            </table>
+                                        <div class="app-chart-wrapper app-chart-with-axis">
+                                           <div id='breakdown-chart'>
+                                            <canvas id='breakdown'></canvas>
+                                          </div>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- END LATEST TRANSACTIONS -->
+                                <!-- END SECTOR BREAKDOWN -->
                                 
                             </div>
+                            <div class="col-md-3">
+                                
+                                <!-- START VALUE MAKEUP -->
+                                <div class="block block-condensed">
+                                    <div class="app-heading">                                        
+                                        <div class="title">
+                                            <h2>Portfolio Value Distribution</h2>
+                                            <p>% of overall value by company</p>
+                                        </div>              
+                                        
+                                    </div>
+                                    
+                                    <div class="block-content">
+                                        <div class="app-chart-wrapper app-chart-with-axis">
+                                           <div id='sector-chart'>
+                                            <canvas id='sectorperformance'></canvas>
+                                          </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- END VALUE MAKEUP -->
+                                
+                            </div>
+                           
+                             <table class="table table-head-light table-striped results-table">
+                                    <tr>                                            
+                                        <th>Company</th>
+                                        <th>Description</th>
+                                        <th>Current Price</th>
+                                        <th>Action Price</th>
+                                        <th>Volume</th>
+                                        <th>Sell / Buy</th>
+                                    </tr>
+                            
+                            </table>
                         </div>
-                        
-                        
-                        
+
+
+                    <!-- Table Row Template -->
+                        <div class="templates">
+                            <table>
+                                <tr class="table-data">
+                                    <td class="company">
+                                           
+                                                <div class="contact-container">
+                                                    <h5 class="tableCompanyName"></h5>
+                                                    <span class="tableCompanyTicker"></span>
+                                                </div>
+                                          
+                                     </td>
+                                    <td class="eDate">
+                                        <p class="entryDate">
+                                        <strong>This was a <span class="buyorsell"></span> order made on  <span class="date"></span></strong>
+                                        <br> The volume of this transaction was <span class="entryVol"></span> shares <br> At <span class="cPriceAt"></span>, the value of this transaction is <span class="value"></span></p>
+                                    </td> 
+                                    <td class="cPrice">
+                                        <span class="currentPrice"></span>
+                                    </td>
+                                    <td class="ePrice">
+                                         <span class="entryPrice"></span>
+                                    </td>
+                                    <td class="inputter">
+                                        <input class="bs-select" name="user_1">
+                                             
+                                        </input>
+                                    </td>
+                                    <td class="execute">
+                                        <button id="sell">Sell</button>
+                                        <button id="buy">Buy</button>
+                                    </td>
+        
+                              </tr>
+                          </table>
+                        </div>
+                    <!-- Table Row Template -->
+
                     </div>
                     <!-- END PAGE CONTAINER -->
-                    
+
+                                    <div class="templates">
+
+                                     <li class="tile-li">                                        
+                                        <!-- START WIDGET TEMPLATE -->
+                                       
+                                        <div class="app-widget-tile app-widget-highlight">
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <div class="icon icon-lg">
+                                                        <span class="icon-bubble"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-8">                                                    
+                                                    <div class="line">
+                                                        <div class="title companyname"><span class="companyname"></span></div>         
+                                                        <div class="title pull-right"><span class="label label-success label-ghost label-bordered"><span class="vol"></span> Shares</span></div>
+                                                    </div>                                        
+                                                    <div class="intval text-left coVal">$<span class="posVal"></span></div>                                        
+                                                </div>
+                                            </div>
+                                        </div>
+                                      
+                                        <!-- END WIDGET TEMPLATE -->                                        
+                                    </li>
+                                      </div>
 <% include inc/footer %>

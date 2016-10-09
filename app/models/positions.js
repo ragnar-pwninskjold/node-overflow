@@ -5,7 +5,9 @@ var positionSchema = mongoose.Schema({
 	volume: Number,
 	entryPrice: Number,
 	entryDate: Date,
-	user: String
+	user: String, 
+	name: String,
+	sector: String
 },
 {
 	timestamps: true

@@ -72,11 +72,15 @@ module.exports = function(app, passport) {
 			var chartData;
 			var runDbResult;
 			runDb(tickerArray, function(err, dbResult) {
-				getChartData(dbResult, function(err, chartResult) {
-					dbResult.timeSeries = chartResult;
-					console.log("logging dbResult after appending timeSeries");
-					res.json(dbResult);
-				});
+				
+					getChartData(dbResult, function(err, chartResult) {
+						dbResult.timeSeries = chartResult;
+						getNews(tickerArray[0].ticker, function(newsArray) {
+							dbResult.news = newsArray;
+							res.json(dbResult);
+						});
+						
+					});	
 			
 			});
 			
@@ -89,11 +93,10 @@ module.exports = function(app, passport) {
 					return fn(err, null);
 				}
 				if (data == null) {
-					console.log('entry not found');
+					console.log('entry not found, creating a new one');
 					getTickerPrice(tickArray, false, function(priceArray) {
 						//then do res.json
-						fn(null, priceArray);
-
+						fn(null, priceArray[0]);
 					});
 						
 				}
@@ -102,23 +105,23 @@ module.exports = function(app, passport) {
 					var currentTime = new Date();
 					var mongoDate = data.updatedAt;
 					diff = currentTime - mongoDate;
-					if (diff > 1200000) { //if its been 20 minutes
+					if (diff > 2400000) { //if its been 40 minutes
 						thisCompany = [];
 						thisCompany[0] = {};
 						thisCompany[0].name = tickArray[0].company; //this will be updated with name and ticker from above
 						thisCompany[0].ticker = tickArray[0].ticker; //this will be updated with name and ticker from above
 
 						getTickerPrice(tickArray, true, function(company){
-							console.log("Updated this company");
-							console.log(company);
+							console.log("Updated this company since its been more than 10 minutes");
+							//console.log(company);
 							//do a res.json
-							fn(null, company);
+							fn(null, company[0]);
 
 						}); 
 					}
 					else {
 						console.log("This company gets sent back and not updated(less than 10 mins)");
-						console.log(data);
+						//console.log(data);
 						fn(null, data);
 
 						//res.json to the client
@@ -130,18 +133,73 @@ module.exports = function(app, passport) {
 
 	});
 
-	app.post('/positions', isLoggedIn, function(req, res) {
-		console.log(req.body);
+	app.post('/positions/:type', isLoggedIn, function(req, res) {
 		user = req.user;
+		uId = user._id;
 		pos = req.body;
 		//also need to add in price here
-		addPosition(user, pos);
-		res.json(req.body);
+		console.log("logging request body to check for how to put posId in history create");
+		console.log(req.body);
+		if (req.params.type == "buy") {
+			addPosition(user, pos, function(userId) {
+				Positions.find({user: userId}, function(err, data) {
+					res.json(data);
+				});
+			});
+		}
+		
+		if (req.params.type == "sell") {
+			Positions.find({_id: req.body._id}, function(err, data) {
+				newVol = data[0].volume - req.body.amount;
+				Positions.findOneAndUpdate({_id: req.body._id}, {volume: newVol}, function(err, data) {
+					console.log(data);
+					History.create({
+						user: user._id,
+						volume: req.body.amount,
+						name: data.name,
+						orderType: "sell",
+						posId: data._id, 
+						entryPrice: data.entryPrice
+					}, function(err, data) {
+						 console.log("inside history.create from sell");
+						 console.log(data);
+					});
+				});
+			});
+		}
+		
+	});
+
+	app.get('/positions', isLoggedIn, function(req, res) {
+		user = req.user;
+		uId = user._id;
+		Positions.find({user: uId}, function(err, data) {
+			res.json(data);
+		});
 	});
 
 	app.get('/history', isLoggedIn, function(req, res) {
-		//this will fill in the profile.ejs 'latest transactions' table 
-		//with ticker, volume, and buy/sell order
+
+		History.find({user: req.user._id}, function(err, data) {
+			res.json(data);
+		});
+
+	});
+
+	app.get('/sectorvalue', isLoggedIn, function(req, res) {
+		console.log("inside sector value");
+		Positions.find().distinct('sector', function(err, ids) {
+			res.json(ids);
+			console.log(ids);
+		});
+	});
+
+	app.get('/companies', isLoggedIn, function(req, res) {
+		console.log("inside of companies");
+		Positions.find().distinct('name', function(err, ids) {
+			res.json(ids);
+			console.log(ids);
+		});
 	});
 
 
@@ -155,24 +213,48 @@ module.exports = function(app, passport) {
 	}
 }
 
-function addPosition(user, position) {
+function addPosition(user, position, done) {
+	var price;
 	positions = [];
 	positions[0] = {};
-	positions[0].user = user;
+	positions[0].user = user._id;
 	positions[0].volume = position.amount;
-	positions[0].ticker = position.company;
-	positions[0].entryPrice = 100; //this needs to be updated with actual price
-	Positions.create(positions[0], function(err) {
+	positions[0].name = position.company;
 
+	Company.findOne({name: positions[0].name}, function(err, data) {
+		console.log("company data from addPosition: ");
+		console.log(data);
 		if (err) {
 			return res.status(500).json({
-				message: 'Error: ' + err
+				message: 'Error: '+ err
 			});
 		}
+		positions[0].sector = data.sector;
+		positions[0].entryPrice = data.price;
+		Positions.create(positions[0], function(err, data) {
 
+			if (err) {
+				return res.status(500).json({
+					message: 'Error: ' + err
+				});
+			}
+			positions[0].posId = data._id;
+
+			positions[0].orderType = "buy";
+
+			History.create(positions[0], function(err, data) {
+				if (err) {
+					return res.status(500).json({
+						message: 'Error: ' + err
+					});
+				}
+			});
+		done(user._id);
+		});
 	});
-	console.log(positions);
 };
+
+
 
 function getTicker(query, done) {
 
@@ -190,15 +272,45 @@ function getTicker(query, done) {
 
 	req.end(function (res) {
 	  	if (res.error) throw new Error(res.error);
-
+	  	var sector;
 	  	var thisCompany = [];
 		thisCompany[0] = {};
 		var company = res.body.data[0].name;
 		var companyTicker = res.body.data[0].ticker;
 		thisCompany[0].name = company;
 		thisCompany[0].ticker = companyTicker;
+		getSector(companyTicker, function(compObj) {
+			sector = compObj.sector;
+		
+			thisCompany[0].sector = sector;
+			if(done!=undefined){
+				done(thisCompany);
+			}
+		});
+
+		
+	});
+};
+
+function getSector(ticker, done) {
+
+	var req = unirest("GET", "https://api.intrinio.com/companies");
+
+	req.query({
+	  "ticker": ticker
+	});
+
+	req.headers({
+	  "postman-token": "77298af7-e61e-5477-badb-3d9cb54271a7",
+	  "cache-control": "no-cache",
+	  "authorization": "Basic Y2Q3MjVhZWZmMjc3NjRhODEzYTNiYmMwMTJhYzU0OTg6NTBmYjA2ZWI0NWMwNTBkZmNjZDM3N2Q2OGJmOWEwMzk="
+	});
+
+	req.end(function (res) {
+	  	if (res.error) throw new Error(res.error);
+
 		if(done!=undefined){
-			done(thisCompany);
+			done(res.body);
 		}
 	});
 };
@@ -265,17 +377,36 @@ function getTickerPrice(tickerArray, update, done) {
 
 
 
-function getNews(companyTicker) {
+function getNews(companyTicker, done) {
 
-	$.ajax({
-		url: "https://api.intrinio.com/news",
-		data: "identifier="+companyTicker,
-		type: "GET",
-		beforeSend: function (xhr) {
-    xhr.setRequestHeader ("Authorization", "Basic " + btoa('cd725aeff27764a813a3bbc012ac5498' + ":" + '50fb06eb45c050dfccd377d68bf9a039'));
-},
-	})
-	.done(function(result) {
+	var req = unirest("GET", "https://api.intrinio.com/news");
+
+	req.query({
+	  "identifier": companyTicker
+	});
+
+	req.headers({
+	  "postman-token": "3d10a905-1342-07bc-e922-8815cee22424",
+	  "cache-control": "no-cache",
+	  "authorization": "Basic Y2Q3MjVhZWZmMjc3NjRhODEzYTNiYmMwMTJhYzU0OTg6NTBmYjA2ZWI0NWMwNTBkZmNjZDM3N2Q2OGJmOWEwMzk="
+	});
+
+
+	req.end(function (res) {
+	  if (res.error) throw new Error(res.error);
+	  Company.findOneAndUpdate({ticker: companyTicker}, {
+				news: res.body.data
+
+				}, function(err) {
+					if (err) {
+						return res.status(500).json({
+							message: 'Error: ' + err
+						});
+					}
+				});
+		done(res.body.data);
+});
+	/*.done(function(result) {
 		//
 
 		console.log(result.data);
@@ -293,7 +424,7 @@ function getNews(companyTicker) {
 			$(".news-items").append(story);
 		}		
 
-	});
+	});*/
 };
 
 function getChartData(dbResultObj, done) {

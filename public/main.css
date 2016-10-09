@@ -116,3 +116,20 @@ input:focus {
 .templates {
 	display: none;
 }
+
+.table-striped {
+	margin-left: 30px;
+}
+
+.table-head-light{
+	width: 95%;
+}
+
+.table-striped {
+	width: 95%;
+}
+
+.table {
+	width: 95%;
+}
+
