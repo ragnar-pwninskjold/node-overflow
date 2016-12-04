@@ -361,8 +361,8 @@ function getTicker(query, done) {
 	});
 
 	req.auth({
-			user: ENV['uName'],
-			pass: ENV['pWord']
+			user: process.env.uName,
+			pass: process.env.pWord
 	});
 
 	
@@ -409,8 +409,8 @@ function getSector(ticker, done) {
 	});
 
 	req.auth({
-			user: ENV['uName'],
-			pass: ENV['pWord']
+			user: process.env.uName,
+			pass: process.env.pWord
 	});
 
 	req.end(function (res) {
@@ -433,8 +433,8 @@ function getTickerPrice(tickerArray, update, done) {
 	});
 
 	req.auth({
-			user: ENV['uName'],
-			pass: ENV['pWord']
+			user: process.env.uName,
+			pass: process.env.pWord
 	});
 
 
@@ -495,8 +495,8 @@ function getNews(companyTicker, done) {
 	});
 
 	req.auth({
-			user: ENV['uName'],
-			pass: ENV['pWord']
+			user: process.env.uName,
+			pass: process.env.pWord
 	});
 
 
@@ -546,8 +546,8 @@ req.query({
 });
 
 req.auth({
-		user: ENV['uName'],
-		pass: ENV['pWord']
+		user: process.env.uName,
+		pass: process.env.pWord
 });
 
 
