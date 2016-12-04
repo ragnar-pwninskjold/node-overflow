@@ -360,11 +360,12 @@ function getTicker(query, done) {
 	  "query": query
 	});
 
-	req.headers({
-	  "postman-token": "77298af7-e61e-5477-badb-3d9cb54271a7",
-	  "cache-control": "no-cache",
-	  "authorization": "Basic Y2Q3MjVhZWZmMjc3NjRhODEzYTNiYmMwMTJhYzU0OTg6NTBmYjA2ZWI0NWMwNTBkZmNjZDM3N2Q2OGJmOWEwMzk="
+	req.auth({
+			user: ENV[uName],
+			pass: ENV[pWord]
 	});
+
+	
 
 	req.end(function (res) {
 	  	if (res.error) throw new Error(res.error);
@@ -407,10 +408,9 @@ function getSector(ticker, done) {
 	  "ticker": ticker
 	});
 
-	req.headers({
-	  "postman-token": "77298af7-e61e-5477-badb-3d9cb54271a7",
-	  "cache-control": "no-cache",
-	  "authorization": "Basic Y2Q3MjVhZWZmMjc3NjRhODEzYTNiYmMwMTJhYzU0OTg6NTBmYjA2ZWI0NWMwNTBkZmNjZDM3N2Q2OGJmOWEwMzk="
+	req.auth({
+			user: ENV[uName],
+			pass: ENV[pWord]
 	});
 
 	req.end(function (res) {
@@ -432,10 +432,9 @@ function getTickerPrice(tickerArray, update, done) {
 	  "item": "ask_price,percent_change,pricetoearnings,debttoequity,roe,roa,currentratio,assetturnover"
 	});
 
-	req.headers({
-	  "postman-token": "b4078fef-b930-0b54-f44c-93b4b9720635",
-	  "cache-control": "no-cache",
-	  "authorization": "Basic Y2Q3MjVhZWZmMjc3NjRhODEzYTNiYmMwMTJhYzU0OTg6NTBmYjA2ZWI0NWMwNTBkZmNjZDM3N2Q2OGJmOWEwMzk="
+	req.auth({
+			user: ENV[uName],
+			pass: ENV[pWord]
 	});
 
 
@@ -495,10 +494,9 @@ function getNews(companyTicker, done) {
 	  "identifier": companyTicker
 	});
 
-	req.headers({
-	  "postman-token": "3d10a905-1342-07bc-e922-8815cee22424",
-	  "cache-control": "no-cache",
-	  "authorization": "Basic Y2Q3MjVhZWZmMjc3NjRhODEzYTNiYmMwMTJhYzU0OTg6NTBmYjA2ZWI0NWMwNTBkZmNjZDM3N2Q2OGJmOWEwMzk="
+	req.auth({
+		user: ENV[uName],
+		pass: ENV[pWord]
 	});
 
 
@@ -547,10 +545,9 @@ req.query({
   "frequency": "yearly"
 });
 
-req.headers({
-  "postman-token": "19332f0f-a6e3-79b9-420e-7d3c84947540",
-  "cache-control": "no-cache",
-  "authorization": "Basic Y2Q3MjVhZWZmMjc3NjRhODEzYTNiYmMwMTJhYzU0OTg6NTBmYjA2ZWI0NWMwNTBkZmNjZDM3N2Q2OGJmOWEwMzk="
+req.auth({
+		user: ENV[uName],
+		pass: ENV[pWord]
 });
 
 
