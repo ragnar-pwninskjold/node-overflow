@@ -8,7 +8,13 @@ var userSchema = mongoose.Schema({
 	},
 	feed: {
 		friends: [String]
-	}
+	},
+	uName: String,
+	portfoliovalue: [{}],
+	cash: {type: Number, default: 100000}
+},
+{
+	timestamps: true
 });
 
 

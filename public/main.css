@@ -76,17 +76,11 @@ input:focus {
 
 .intro {
 	text-align: center;
+
 }
 
 .test {
 	text-align: center;
-}
-
-.chart2 {
-	max-width: 725px;
-	max-height: 300px;
-	margin: 0 auto;
-	margin-bottom: 20px;
 }
 
 .chart-left {
@@ -107,11 +101,6 @@ input:focus {
 	margin-top: 0px;
 }
 
-.buy-it {
-	position: absolute;
-	top: 80px;
-	right: 60px;
-}
 
 .templates {
 	display: none;
@@ -131,5 +120,36 @@ input:focus {
 
 .table {
 	width: 95%;
+}
+
+#lineChart1 {
+	margin: 0 auto;
+}
+
+.container .intro {
+	width: 20% !important;
+}
+
+.container .intro-2 {
+	float: left;
+	width: 60% !important;
+	text-align: center;
+}
+
+.container .intro-3 {
+	float: left;
+	width: 20% !important;
+	text-align: center;
+}
+
+.intros {
+	width: 100%;
+}
+
+.buying {
+	position: absolute;
+    top: 10px;
+    right: 50px;
+    width: 100px;
 }
 

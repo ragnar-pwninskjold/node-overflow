@@ -13,12 +13,12 @@
                                         <div class="block block-condensed padding-top-20">
                                             <div class="block-content">
                                                 <div class="form-group">
-                                                    <textarea name="text" class="form-control" placeholder="Your message..." rows="3"></textarea>
+                                                    <textarea name="text" class="form-control commentpost" placeholder="Your message..." rows="3"></textarea>
                                                 </div>                                            
                                                 <div class="form-group">
                                                 
                                                     
-                                                    <button class="btn btn-default btn-icon-fixed pull-right"><span class="fa fa-paper-plane"></span> Post Message</button>
+                                                    <button class="btn btn-default btn-icon-fixed pull-right comment"><span class="fa fa-paper-plane"></span> Post Message</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -26,7 +26,7 @@
                                         <div class="app-timeline">
                                             
                                             <div class="app-timeline-item">
-                                                <div class="user"><img src="assets/images/users/user_1.jpg" alt="Taylor Watson"></div>
+                                                <div class="user"></div>
                                                 <div class="content">
                                                     <div class="title"><a href="#">Taylor Watson</a> posted comment to <strong>Awesome article</strong></div>
                                                     <p>Praesent <strong>tellus elit</strong>, efficitur sit amet ex id, euismod auctor risus. <strong>Nullam a arcu tincidunt</strong>, ultrices nulla vitae, porta est.</p>
@@ -41,7 +41,6 @@
                                                         <div class="total">3 Comments for this post</div>
                                                         <div class="comment">
                                                             <div class="contact contact-rounded contact-lg">
-                                                                <img src="assets/images/users/user_7.jpg">
                                                                 <div class="contact-container">
                                                                     <a href="#">Jared Stevens</a>
                                                                     <span>Hey! This is really awesome thing... Wha do you think about it?</span>
@@ -50,7 +49,6 @@
                                                         </div>
                                                         <div class="comment">
                                                             <div class="contact contact-rounded contact-lg">
-                                                                <img src="assets/images/users/user_4.jpg">
                                                                 <div class="contact-container">
                                                                     <a href="#">Lilu Dallas</a>
                                                                     <span>Multi-pasport...</span>
@@ -59,7 +57,6 @@
                                                         </div>
                                                         <div class="comment">
                                                             <div class="contact contact-rounded contact-lg">
-                                                                <img src="assets/images/users/user_6.jpg">
                                                                 <div class="contact-container">
                                                                     <a href="#">Corben Dallas</a>
                                                                     <span>Wow... nice! Like like like...</span>
@@ -81,7 +78,7 @@
                                             </div>
                                             
                                             <div class="app-timeline-item">
-                                                <div class="user"><img src="assets/images/users/user_2.jpg" alt="Jessie Franklin"></div>
+                                                <div class="user"></div>
                                                 <div class="content">
                                                     <div class="title"><a href="#">Jessie Franklin</a> commented <strong>New York City photo</strong></div>                                                    
                                                     <p>Mauris tempor semper viverra. <strong>Aliquam laoreet malesuada</strong> nisl, fringilla accumsan mi condimentum a. <a href="#">Nullam lacinia egestas</a>. Proin iaculis malesuada mi, quis <a href="#">@Iaculis</a> magna tristique sed.</p>
@@ -97,7 +94,6 @@
                                                         <div class="total">1 Comments for this post</div>                                                        
                                                         <div class="comment">
                                                             <div class="contact contact-rounded contact-lg">
-                                                                <img src="assets/images/users/user_8.jpg">
                                                                 <div class="contact-container">
                                                                     <a href="#">Mary Londro</a>
                                                                     <span>I saw this place tomorrow... really beautiful place!</span>
@@ -137,46 +133,7 @@
                                                 </div>
                                             </div> 
                                             
-                                            <div class="contact contact-rounded contact-bordered contact-lg status-online">
-                                                <img src="assets/images/users/user_1.jpg">
-                                                <div class="contact-container">
-                                                    <a href="#">John Doe</a>
-                                                    <span>2 min ago</span>
-                                                </div>
-                                               
-                                            </div>
-                                            <div class="contact contact-rounded contact-bordered contact-lg status-online">
-                                                <img src="assets/images/users/user_2.jpg">
-                                                <div class="contact-container">
-                                                    <a href="#">Juan Obrien</a>
-                                                    <span>15 hours ago</span>
-                                                </div>
-                                               
-                                            </div>
-                                            <div class="contact contact-rounded contact-bordered contact-lg status-online">
-                                                <img src="assets/images/users/user_3.jpg">
-                                                <div class="contact-container">
-                                                    <a href="#">Erin Stewart</a>
-                                                    <span>2 days ago</span>
-                                                </div>
-                                                
-                                            </div>
-                                            <div class="contact contact-rounded contact-bordered contact-lg status-online">
-                                                <img src="assets/images/users/user_4.jpg">
-                                                <div class="contact-container">
-                                                    <a href="#">Elaine Harper</a>
-                                                    <span>2 days ago</span>
-                                                </div>
-                                               
-                                            </div>
-                                            <div class="contact contact-rounded contact-bordered contact-lg status-away">
-                                                <img src="assets/images/users/user_5.jpg">
-                                                <div class="contact-container">
-                                                    <a href="#">Chester Vargas</a>
-                                                    <span>Month ago</span>
-                                                </div>
-                                              
-                                            </div>
+                                            
                                             
                                         </div>
                                         
@@ -185,6 +142,17 @@
 
                             </div>
                             <!-- END CONTENT CONTAINER -->
+                        </div>
+                    </div>
+
+                    <div class="templates">
+                        <div class="users">
+                            <div class="contact contact-rounded contact-bordered contact-lg status-online">
+                                <div class="contact-container">
+                                    <a href="#" class="name"></a>
+                                    <button class="addFriend">Add as a friend</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <!-- END PAGE SEPARATED CONTAINER -->

@@ -30636,3 +30636,16 @@ input[type="file"] {
 .app.app-rtl .breadcrumb > li + li:before {
   content: "\f104";
 }
+
+.newsCompany {
+  font-weight: bold;
+}
+
+.newsintro {
+  font-size: 3.0em;
+  margin-bottom: 50px;
+}
+
+.sum {
+  margin-bottom: 50px;
+}

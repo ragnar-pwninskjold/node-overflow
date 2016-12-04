@@ -11,7 +11,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var configDB = require('./config/database.js');
-
+var Cron = require('node-cron');
 //configure to connect to db
 
 mongoose.connect(configDB.url); //connect to the DB
@@ -31,6 +31,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
+	// var task = Cron.schedule('00 45 16 * * 7', function() {
+	// 	console.log("running at the time specified");
+	// });
+	// task.start();
 
 //set up routes
 

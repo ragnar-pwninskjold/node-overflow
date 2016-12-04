@@ -6,18 +6,26 @@ var ratios;
 var news;
 
 $(document).ready(function() {
-//console.log(db);
 $.get('/api/apple', function(data) {
-				console.log(data);
 				name = data.name;
 				price = data.price;
 				ticker = data.ticker;
 				ratios = data.ratios;
 				change = data.change;
 				newsArray = data.news;
+				exchange = data.exchange;
+				address = data.address;
+				ceo = data.ceo;
+				desc = data.description;
+				url = data.url;
 				$("#companyName").text(name);
 				$("#companyTicker").text(ticker);
 				$("#currentPrice").text("$"+price);
+				$("#ceo").text(ceo);
+				$("#address").text(address);
+				$("#url").text(url);
+				$("#short").text(desc);
+				$("#exchange").text(exchange);
 				if (change>=0) {
 					$("#percentChange").text("(+"+change+"%)").css("color", "green");
 				}
@@ -40,11 +48,12 @@ $.get('/api/apple', function(data) {
 				var date = story.find(".date");
 				date.text(newsArray[i].publication_date);
 				var title = story.find(".title");
-				title.text(newsArray[i].title).attr("href", newsArray[i].url);
+				title.text(newsArray[i].title);
+				url = newsArray[i].url;
+				titleAnchor = story.find(".titleanchor");
+				titleAnchor.attr("href", url);
 				var summary = story.find(".summary");
 				summary.text(newsArray[i].summary);
-				var url = story.find(".url");
-				url.text(newsArray[i].url);
 				$(".news-items").append(story);
 			}	
 			});
@@ -52,6 +61,7 @@ $.get('/api/apple', function(data) {
 
 		if (e.which == 13) {
 			e.preventDefault();
+			$(".news-items").empty();
 			var query = $('#searchBox').val();
 			$.get('/api/'+query, function(data) {
 				console.log(data);
@@ -61,9 +71,19 @@ $.get('/api/apple', function(data) {
 				ratios = data.ratios;
 				change = data.change;
 				newsArray = data.news;
+				exchange = data.exchange;
+				address = data.address;
+				ceo = data.ceo;
+				desc = data.description;
+				url = data.url;
 				$("#companyName").text(name);
 				$("#companyTicker").text(ticker);
 				$("#currentPrice").text("$"+price);
+				$("#ceo").text(ceo);
+				$("#address").text(address);
+				$("#url").text(url);
+				$("#short").text(desc);
+				$("#exchange").text(exchange);
 				if (change>=0) {
 					$("#percentChange").text("(+"+change+"%)").css("color", "green");
 				}
@@ -78,8 +98,11 @@ $.get('/api/apple', function(data) {
 				$("#assetturnover").text(ratios[5]);
 				graphData = data.timeSeries;
 				var chart = $("#lineChart1");
+				
 				makePriceGraph(chart, graphData);
 				$(".newsCompany").text(name);
+
+			
 
 			for (var i = 0; i < 10; i++) {
 				var story = $(".templates .news-item").clone();
@@ -99,12 +122,12 @@ $.get('/api/apple', function(data) {
 
 	$("#buy-button").on("click", function() {
 		var amount = prompt("How many shares?");
-		console.log(amount);
-		console.log(name);
-		$.post('/positions/buy', {company: name, amount: amount}, function(data, status) {
-			console.log(data);
-			console.log(status);
-		});
+	
+		if (amount != 0 || null) {
+			$.post('/positions/buy', {company: name, amount: amount}, function(data, status) {
+				//do nothing
+			});
+		}
 	});
 
 
@@ -119,6 +142,8 @@ $.get('/api/apple', function(data) {
 function makePriceGraph(chart, obj) {
 	lbl = [];
 	pric = [];
+
+
 	
 	for (var i = 0; i < 5; i++) {
 		lbl.push(obj[i].date);
@@ -150,7 +175,12 @@ function makePriceGraph(chart, obj) {
 					y: pric[0]
 				}]
 			}]
-		}
+		},
+		options: {
+        responsive: false,
+        maintainAspectRatio: true
+    }
+
 	});
 
 }

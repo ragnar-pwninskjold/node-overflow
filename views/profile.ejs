@@ -1,23 +1,12 @@
 <% include inc/header %>
                     
-                    <!-- START PAGE HEADING -->
-                    <div class="app-heading app-heading-bordered app-heading-page">
-                        <div class="icon icon-lg">
-                            <span class="icon-laptop-phone"></span>
-                        </div>
-                        <div class="title">
-                            <h1>FinApp - This is your portfolio</h1>
-                        </div>               
-                        
-                    </div>
-                   
-                    <!-- END PAGE HEADING -->
+    
                     
                     <!-- START PAGE CONTAINER -->
                     <div class="container">
                                                 
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-md-4">
     
                                 <ul class="app-feature-gallery app-feature-gallery-noshadow margin-bottom-0">
                                     <li>
@@ -27,7 +16,18 @@
                                                 <div class="title">Portfolio Value</div>
                                                 <div class="title pull-right"><span class="label label-success label-ghost label-bordered">+1.2%</span></div>
                                             </div>                                        
-                                            <div class="intval"><span class="pVal">$9,427</span></div>                                        
+                                            <div class="intval"><span class="pVal"></span></div>                                        
+                                        </div>                                                                        
+                                        <!-- END WIDGET -->
+                                    </li>
+                                    <li>
+                                        <!-- START WIDGET -->
+                                        <div class="app-widget-tile">
+                                            <div class="line">
+                                                <div class="title">Cash Holdings</div>
+                                                <div class="title pull-right"><span class="label label-success label-ghost label-bordered"></span></div>
+                                            </div>                                        
+                                            <div class="intval"><span class="cVal"></span></div>                                        
                                         </div>                                                                        
                                         <!-- END WIDGET -->
                                     </li>
@@ -42,39 +42,16 @@
                                         </div>                                                                        
                                         <!-- END WIDGET -->
                                     </li>
-                                    <li>
-                                    </li>
+                                    
                                 </ul>
                                 
                             </div>
                             <div class="col-md-3">
                                 
-                                <ul class="app-feature-gallery app-feature-gallery-noshadow margin-bottom-0">
-                                    <li>
-                                        <!-- START WIDGET -->
-                                        <div class="app-widget-tile app-widget-highlight">
-                                            <div class="line">
-                                                <div class="title">Daily Performance</div>
-                                            </div>                                        
-                                            <div class="intval">+.03%</div>
-                                        </div>
-                                        <!-- END WIDGET -->
-                                    </li>
-                                    <li>
-                                        <!-- START WIDGET -->
-                                        <div class="app-widget-tile app-widget-highlight">
-                                            <div class="line">
-                                                <div class="title">Weekly Performance</div>
-                                            </div>                                        
-                                            <div class="intval">+1.1%</div>
-                                        </div>
-                                        <!-- END WIDGET -->
-                                    </li>
-                                   
-                                </ul>
+                                
                                                                 
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 
                                 <ul class="app-feature-gallery app-feature-gallery-noshadow margin-bottom-0 positionsUl">
                                 
@@ -222,6 +199,7 @@
                                         <button id="sell">Sell</button>
                                         <button id="buy">Buy</button>
                                     </td>
+                                    <td class="tId" style="display:none"></td>
         
                               </tr>
                           </table>

@@ -7,7 +7,8 @@ var positionSchema = mongoose.Schema({
 	entryDate: Date,
 	user: String, 
 	name: String,
-	sector: String
+	sector: String,
+	positionVal: [Number]
 },
 {
 	timestamps: true
@@ -17,3 +18,4 @@ var positionSchema = mongoose.Schema({
 
 
 module.exports = mongoose.model('Positions', positionSchema);
+

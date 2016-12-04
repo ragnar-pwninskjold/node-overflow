@@ -9,7 +9,12 @@ var companySchema = mongoose.Schema({
 	ratios:[Number],
 	change: Number,
 	news:[{}],
-	sector: String
+	sector: String,
+	description: String,
+	exchange: String,
+	ceo: String,
+	address: String,
+	url: String
 },
 {
 	timestamps: true

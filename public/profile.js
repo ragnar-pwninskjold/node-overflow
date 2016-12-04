@@ -1,24 +1,50 @@
 var posArray = [];
 var sectors = [];
 var companies = [];
+var history = [];
+var trueSectors = [];
+var trueCompanies = [];
+var changeArray = [];
+var currentCompany = 0;
+
 $(document).ready(function() {
 
+
 $.get('/sectorvalue', function(data) {
-	console.log("logging data from sector value");
-	console.log(data);
+
 	sectors = data;
 });
 
 $.get('/companies', function(data) {
-	console.log("logging the unique companies from db");
-	console.log(data);
+	
 	companies = data;
-})
+});
+
 
 $.get('/positions', function(data) {
 	var portfolioVal = 0;
 	var nameArray = [];
 	posArray = data;
+	var localCount=0;
+	$.each(posArray, function(index, value) {
+		var sector = value.sector;
+		localCount++;
+		var presence = sectors.indexOf(sector);
+		var presence2 = trueSectors.indexOf(sector);
+		
+			if (presence != -1 && presence2 == -1) {
+			trueSectors.push(sector);
+		}
+	});
+
+	$.each(posArray, function(index, value) {
+		var presence = companies.indexOf(value.name);
+		var presence2 = trueCompanies.indexOf(value.name);
+		if (presence != -1 && presence2 == -1) {
+			trueCompanies.push(value.name);
+		}
+	});
+	
 	var posAndSec = [];
 	for (var i = 0; i < posArray.length; i++) {
 		thisVal = ((posArray[i].entryPrice)*(posArray[i].volume));
@@ -26,7 +52,7 @@ $.get('/positions', function(data) {
 		makeTile(posArray[i]);
 	}
 	var totalsArray = [];
-	$.each(sectors, function(index, value) {
+	$.each(trueSectors, function(index, value) {
 		var total = 0;
 		
 		for (i=0; i<posArray.length;i++) {
@@ -35,12 +61,11 @@ $.get('/positions', function(data) {
 			}
 			
 		}
-			console.log("total for loop: " + index + "("+value+")");
-			console.log(total);
+			
 			totalsArray.push(total);
 	});
 	var companiesArray = [];
-	$.each(companies, function(index, value) {
+	$.each(trueCompanies, function(index, value) {
 		var total = 0;
 		
 		for (i=0; i<posArray.length;i++) {
@@ -49,37 +74,33 @@ $.get('/positions', function(data) {
 			}
 			
 		}
-			console.log("total for loop: " + index + "("+value+")");
-			console.log(total);
+		
 			companiesArray.push(total);
 	});
+	$.each(trueCompanies, function(index, value) {
+		$.get('/api/'+value, function(data) {
+			change = data.change;
+			changeArray.push(change);
+			barChart();
+		});
+	});	
 
-	// console.log(companiesArray);
+	
 	var sectorchart = $("#breakdown");
-	makeSectorPie(sectors, totalsArray, sectorchart, "pie");
+	makeSectorPie(trueSectors, totalsArray, sectorchart, "pie");
 	var companieschart = $("#sectorperformance");
-	makeSectorPie(companies, companiesArray, companieschart, "doughnut");
+	makeSectorPie(trueCompanies, companiesArray, companieschart, "doughnut");
 
-	// for (var i = 0; i < posArray.length; i++) {
-	// 	if (posArray[i].sector == sectors[i]) {
-	// 		var obj = {};
-	// 		var value = posArray[i].entryPrice*posArray[i].volume;
-	// 		var sector = sectors[i];
-	// 		obj.value = value;
-	// 		obj.sector = sector;
-	// 		posAndSec.push(obj);
-	// 	}
-	// }
+	var barChart = function () {
+		currentCompany++;
+		if (currentCompany == trueCompanies.length) {
+			var performanceChart = $("#portfolioperformance");
+			makeBar(trueCompanies, changeArray, performanceChart, "bar");
+		}
+	};
 
-	// for (var i = 0; i < posAndSec.length; i++) {
-	// 	posAndSec[i]
-	// }
-     console.log("positions: ");
-	 console.log(data);
-	// console.log("sectors: ");
-	// console.log(sectors);
-	// console.log(posAndSec);
-
+	
+	portfolioVal = portfolioVal.toFixed(2);
 	$(".pVal").text("$"+portfolioVal);
 	$(".numpos").text(posArray.length);
 
@@ -89,9 +110,12 @@ $.get('/positions', function(data) {
 
 
 
+
+
+
 $.get('/history', function(data) {
-	console.log("history: ");
-	console.log(data);
+	
+	history = data;
 	for (var i = 0; i < data.length; i++) {
 		makeRow(data[i]);
 	}
@@ -107,8 +131,7 @@ $(document).on("click", "#sell", function(event) {
 	var tId = dataRow.find(".tId").text();
 	
 	$.post('/positions/sell', {_id: tId, amount: volume}, function(data, status) {
-		console.log("logging data from within the click of sell");
-		console.log(data);
+		//do nothing
 	});
 	
 });
@@ -121,18 +144,24 @@ $(document).on("click", "#buy", function(event) {
 	transactionArray.push(company);
 	transactionArray.push(volume);
 	$.post('/positions/buy', {company: company, amount: volume}, function(data, status) {
-		console.log("logging data from within the click of buy");
-		console.log(data);
+		if (data == "negative-balance") {
+			alert("Sorry, you don't have enough cash to make that purchase");
+		}
 	});
 });
 
-// $.post('/positions', {name: 'Apple Inc', volume: 10, type: "sell"}, function(data, status) {
-// 	console.log(data);
-// });
 
+
+$.get('/cash', function(data) {
+	userObj = data;
+	cash = (userObj.cash).toFixed(2);
+	$('.cVal').text("$"+cash);
+});
 
 
 });
+
+
 
 function makeRow(data) {
 		var mainObj = data;
@@ -146,14 +175,16 @@ function makeRow(data) {
 	
 
 		var date = mainObj.createdAt;
-		var price = mainObj.entryPrice;
+		var price = mainObj.entryPrice.toFixed(2);
 		var name = mainObj.name;
 
 		var volume = mainObj.volume;
 		var orderType = mainObj.orderType;
-		var value = price*volume;
+		var value = (price*volume).toFixed(2);
 		var orderType = mainObj.orderType;
 		var tId = mainObj.posId;
+		var tIdRow = newRow.find(".tId");
+		tIdRow.text(tId);
 	    var currentPriceRow = newRow.find('.currentPrice');
 		currentPriceRow.text("$"+currentPrice);	
 		var cPriceAtRow = newRow.find('.cPriceAt');
@@ -197,8 +228,8 @@ function makeTile(pos) {
 
 	var name = pos.name;
 	var vol = pos.volume;
-	var value = pos.entryPrice*vol;
-	console.log(value);
+	var value = (pos.entryPrice*vol);
+	val = value.toFixed(2);
 
 	var nameTile = tile.find('.companyname');
 	nameTile.text(name);
@@ -207,7 +238,7 @@ function makeTile(pos) {
 	volTile.text(vol);
 
 	var valTile = tile.find('.posVal');
-	valTile.text(value);
+	valTile.text(val);
 
 	$(".positionsUl").append(tile);
 }
@@ -240,8 +271,37 @@ colors = [];
 		}
 	});
 	
-	
+}
 
+function makeBar(labels, totals, chart, type) {
+
+
+// lbl = [];
+totl = [];
+colors = [];
+
+
+	for (var i = 0; i < totals.length; i++) {
+		var x = getRandomColor();
+		colors.push(x);
+		totl.push(totals[i]);
+	}
+	
+	// lbl = lbl.reverse();
+	
+	var graph = new Chart(chart, {
+		type: type,
+		data: {
+			labels: labels,
+			datasets: [{
+				label: "%Change in Stock Performance",
+				data: totals,
+				backgroundColor: colors
+
+			}]
+		}
+	});
+	
 }
 
 function getRandomColor() {

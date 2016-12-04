@@ -4,18 +4,31 @@
 <div class="container">
 <!-- id for input should be 'search-term' -->
 <div class="container result">
+	<div class="intros">
 	<div class="container intro">
-		<h1 id="companyName">Test Company Inc</h1>
-		<h2 id="companyTicker">TCINC</h2>
+		
+		<h1>Ticker: <span id="companyTicker">TCINC</span></h1>
 		<h3 id=><span id="currentPrice"></span> <span id="percentChange"> (+.03%)</span></h3>
+		<h3>Exchange: <span id="exchange"</span></h3>
+
 	</div>
-	<div class="buy-it">
-		<button name="buy-button" id="buy-button">Buy this stock</button>
+	<div class="container intro-2">
+		<h1 id="companyName">Test Company Inc</h1>
+		<h2 id="short">Example description</h2>
+	</div>
+	<div class="container intro-3">
+		<h1> CEO: <span id="ceo">Joe Blow</span></h1>
+		<h2 id="address">Example Address</h2>
+		<h3 id="url"> url example </h3>
+	</div>
+
+	</div>
+
 	</div>
 
 	
-	<div id='chart'>
-		<canvas id='lineChart1'></canvas>
+	<div>
+		<canvas id='lineChart1' width="800" height="200"></canvas>
 	</div>
 		
 </div>
@@ -61,16 +74,17 @@
 	</table>
 </div>
 	<div class="container news" id="news">
-			<h1>News related to <span class="newsCompany">Example Company</span></h1>
-				<div class="news-items"></div>
+			<h1 class="newsintro">News related to <span class="newsCompany">Example Company</span></h1>
+				<div class="news-items">
+
+				</div>
 
 
 				<div class="templates">
 					<div class="news-item">
-						<h2>Title: <span class="title"></span></h4>
-						<h3>Date: <span class="date"></span> </h6>
-						<h4>Summary: <span class="summary"></span> </h5>
-						<h5>url: <span class="url"></span> </h6>
+						<h2>Title: <a class="titleanchor"><span class="title"></span></a></h2>
+						<h3>Date: <span class="date"></span> </h3>
+						<h4 class="sum">Summary: <span class="summary"></span> </h4>
 					</div>
 				</div>
 	</div>

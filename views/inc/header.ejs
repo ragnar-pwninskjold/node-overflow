@@ -4,7 +4,8 @@
 	<title>FinApp | Builder</title>
 	<link rel="stylesheet" type="text/css" href="/static/normalize.css"></link>
 	<link rel="stylesheet" type="text/css" href="/static/main.css"></link>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"></link>
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" href="/static/css/styles.css"></link>
 
 </head>
@@ -24,7 +25,6 @@
                         <ul class="app-header-buttons">
                             <li><a href="/profile">Profile</a></li>
                             <li class="active"><a href="/builder">Builder <span class="sr-only">(current)</span></a></li>
-                            <li><a href="/feed">Feed</a></li>
                         </ul>
                         <form class="app-header-search">        
                             <input type="text" name="keyword" placeholder="Search" id="searchBox">
@@ -32,24 +32,20 @@
                     
                         <ul class="app-header-buttons pull-right">
                             <li>
-                                <div class="contact contact-rounded contact-bordered contact-lg contact-ps-controls">
-                                    <img src="assets/images/users/user_1.jpg" alt="John Doe">
-                                    <div class="contact-container">
-                                        <a href="#">This is you</a>
-                                    </div>
+
+                          <div class="buying"> <button name="buy-button" id="buy-button">Buy this stock</button></div>
+        
+                               
                                     <div class="contact-controls">
                                         <div class="dropdown">
                                             <button type="button" class="btn btn-default btn-icon" data-toggle="dropdown"><span class="icon-cog"></span></button>                        
                                             <ul class="dropdown-menu dropdown-left">
-                                                <li><a href="#"><span class="icon-cog"></span> Settings</a></li> 
-                                                <li><a href="#"><span class="icon-envelope"></span> Messages <span class="label label-danger pull-right">+24</span></a></li>
-                                                <li><a href="#"><span class="icon-users"></span> Contacts <span class="label label-default pull-right">76</span></a></li>
-                                                <li class="divider"></li>
-                                                <li><a href="#"><span class="icon-exit"></span> Log Out</a></li> 
+                                               
+                                                <li><a href="/logout"><span class="icon-exit"></span> Log Out</a></li> 
                                             </ul>
                                         </div>                    
                                     </div>
-                                </div>
+                                
                             </li>        
                         </ul>
                     </div>
