@@ -64,6 +64,10 @@ $.get('/api/apple', function(data) {
 			$(".news-items").empty();
 			var query = $('#searchBox').val();
 			$.get('/api/'+query, function(data) {
+				if (data == "NF") {
+					alert("Sorry, that couldn't be found. Try another search please");
+					return;
+				}
 				console.log(data);
 				name = data.name;
 				price = data.price;

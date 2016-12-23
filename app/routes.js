@@ -71,6 +71,10 @@ module.exports = function(app, passport) {
 		
 			var chartData;
 			var runDbResult;
+			console.log(tickerArray);
+			if (tickerArray == "NF") {
+				return res.json("NF");
+			}
 			runDb(tickerArray, function(err, dbResult) {
 					
 					getChartData(dbResult, function(err, chartResult) {
@@ -356,7 +360,14 @@ function getTicker(query, done) {
 	
 
 	req.end(function (res) {
-	  	if (res.error) throw new Error(res.error);
+		console.log("logging res error ---------------");
+		console.log(res.error);
+		console.log("logging res body ----------------");
+		console.log(res.body);
+	  	if (res.body.result_count == 0) {
+	  		console.log("logged 0");
+	  		return done("NF");
+	  	}
 	  	var sector;
 	  	var thisCompany = [];
 		thisCompany[0] = {};
