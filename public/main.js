@@ -130,7 +130,10 @@ $.get('/api/apple', function(data) {
 	
 		if (amount != 0 || null) {
 			$.post('/positions/buy', {company: name, amount: amount}, function(data, status) {
-				//do nothing
+				if (data == "negative-balance") {
+					alert("Sorry, you don't have enough cash for that");
+					return;
+				}
 			});
 		}
 	});
