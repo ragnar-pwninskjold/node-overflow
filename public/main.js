@@ -142,15 +142,18 @@ $.get('/api/apple', function(data) {
 function makePriceGraph(chart, obj) {
 	lbl = [];
 	pric = [];
+	chartData=[];
 
 
 	
-	for (var i = 0; i < 5; i++) {
-		lbl.push(obj[i].date);
-		pric.push(obj[i].value);
-		
+	for (var i = 0; i < obj.length; i++) {
+		if(i < 5){
+			lbl.push(obj[i].date);
+			chartData.push({x:(i+1),y:obj[i].value});
+		}
 	}
-	lbl = lbl.reverse();
+	chartData.reverse();
+	lbl.reverse();
 	
 	var graph = new Chart(chart, {
 		type: 'line',
@@ -158,22 +161,7 @@ function makePriceGraph(chart, obj) {
 			labels: lbl,
 			datasets: [{
 				label: 'Historical Stock Price',
-				data: [{
-					x: 1,
-					y: pric[4] 
-				}, {
-					x: 2,
-					y: pric[3]
-				}, {
-					x: 3,
-					y: pric[2]
-				}, {
-					x: 4,
-					y: pric[1] 
-				}, {
-					x: 5,
-					y: pric[0]
-				}]
+				data: chartData
 			}]
 		},
 		options: {

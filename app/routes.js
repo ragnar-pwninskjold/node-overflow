@@ -58,11 +58,6 @@ module.exports = function(app, passport) {
 		});
 	});
 
-	// app.get('/feed', isLoggedIn, function(req, res) {
-	// 	res.render('feed.ejs', {
-	// 		user: req.user
-	// 	});
-	// });
 
 	app.get('/api/:query', isLoggedIn, function(req, res) {
 		var ticker;
@@ -73,13 +68,11 @@ module.exports = function(app, passport) {
 			company = tickerArray.name;
 			ticker = tickerArray.ticker;
 			tickerArray = tickerArray;
-			console.log("now logging tickerArray after it was returned from the done");
-			console.log(tickerArray);
+		
 			var chartData;
 			var runDbResult;
 			runDb(tickerArray, function(err, dbResult) {
-					console.log("logging tickerArray inside of runDb");
-					console.log(tickerArray);
+					
 					getChartData(dbResult, function(err, chartResult) {
 						dbResult.timeSeries = chartResult;
 						//dbResult.intro = tickerArray[0];
@@ -123,7 +116,7 @@ module.exports = function(app, passport) {
 
 						getTickerPrice(tickArray, true, function(company){
 							console.log("Updated this company since its been more than 10 minutes");
-							//console.log(company);
+							
 							//do a res.json
 						
 							fn(null, company[0]);
@@ -132,7 +125,6 @@ module.exports = function(app, passport) {
 					}
 					else {
 						console.log("This company gets sent back and not updated(less than 10 mins)");
-						//console.log(data);
 					
 						fn(null, data);
 
@@ -176,7 +168,6 @@ module.exports = function(app, passport) {
 				sellVol = req.body.amount;
 				newVol = data[0].volume - req.body.amount;
 				Positions.findOneAndUpdate({_id: req.body._id}, {volume: newVol}, function(err, data) {
-					console.log(data);
 					History.create({
 						user: user._id,
 						volume: req.body.amount,
@@ -313,7 +304,6 @@ function addPosition(user, position, done) {
 			newAmount = oldCash - newCashTransaction;
 			//why is this chunk of code returning "negative-balance"
 			if (newAmount > 0) {
-				console.log("inside of the if for negative balance");
 				User.findOneAndUpdate({_id: user._id}, {cash: newAmount}, function(err, data) {
 				});
 				Positions.create(positions[0], function(err, data) {
@@ -334,12 +324,10 @@ function addPosition(user, position, done) {
 							});
 						}
 					});
-				console.log("right before the done which should've been returned out of already");
 				done(null, user._id);
 				});
 			}
 			else {
-				console.log("inside of the else for negative balance");
 				return done("negative-balance", user._id);
 			}
 			//why is this chunk of code returning "negative-balance"
@@ -439,8 +427,7 @@ function getTickerPrice(tickerArray, update, done) {
 
 
 	req.end(function (res) {
-	  console.log("inside of tickerprice");
-	  console.log(res.body);
+	 
 	  if (res.error) throw new Error(res.error);
 		var price = res.body.data[0].value;
 		var percentChange = parseFloat(Math.round(res.body.data[1].value * 10000) / 100).toFixed(2);
@@ -453,10 +440,16 @@ function getTickerPrice(tickerArray, update, done) {
 		tickerArray[0].price = price;
 		tickerArray[0].ratios = [pe, de, roe, roa, currentratio, assetturnover];
 		tickerArray[0].change = percentChange;
+		for (i=0; i < tickerArray[0].ratios.length; i++) {
+			if ( typeof (tickerArray[0].ratios[i]) != "number") {
+				tickerArray[0].ratios[i] = 0;
+			}
+		}
 		//now add everything from last two requests to database
 		if (update == false) {
 			Company.create(tickerArray[0], function(err) {
 				if (err) {
+					console.log("line 452 err", err);
 					return res.status(500).json({
 						message: 'Error: ' + err
 					});
