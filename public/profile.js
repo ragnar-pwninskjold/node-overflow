@@ -7,8 +7,9 @@ var trueCompanies = [];
 var changeArray = [];
 var currentCompany = 0;
 
-$(document).ready(function() {
+if (window.location.pathname == "/profile") {
 
+$(document).ready(function() {
 
 $.get('/sectorvalue', function(data) {
 
@@ -313,4 +314,4 @@ function getRandomColor() {
     return color;
 }
 
-
+}

@@ -4,8 +4,9 @@ var price;
 var ticker;
 var ratios;
 var news;
-
+if (window.location.pathname == "/builder") {
 $(document).ready(function() {
+
 $.get('/api/apple', function(data) {
 				name = data.name;
 				price = data.price;
@@ -178,6 +179,6 @@ function makePriceGraph(chart, obj) {
 }
 
 
-
+}
 
 
