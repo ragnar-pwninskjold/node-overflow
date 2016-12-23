@@ -21,6 +21,7 @@ module.exports = function(app, passport) {
 		res.render('login.ejs', {message: req.flash('loginMessage')});
 	});
 
+
 	 app.post('/login', passport.authenticate('local-login', {
         successRedirect : '/profile', // redirect to the secure profile section
         failureRedirect : '/login', // redirect back to the signup page if there is an error
@@ -42,6 +43,7 @@ module.exports = function(app, passport) {
 	//more passport things
 
 	app.get('/profile', isLoggedIn, function(req, res) {
+		console.log("req.user log test----------",req.user);
 		res.render('profile.ejs', {
 			user: req.user
 		});
@@ -71,7 +73,6 @@ module.exports = function(app, passport) {
 		
 			var chartData;
 			var runDbResult;
-			console.log(tickerArray);
 			if (tickerArray == "NF") {
 				return res.json("NF");
 			}
@@ -360,10 +361,6 @@ function getTicker(query, done) {
 	
 
 	req.end(function (res) {
-		console.log("logging res error ---------------");
-		console.log(res.error);
-		console.log("logging res body ----------------");
-		console.log(res.body);
 	  	if (res.body.result_count == 0) {
 	  		console.log("logged 0");
 	  		return done("NF");
@@ -460,7 +457,6 @@ function getTickerPrice(tickerArray, update, done) {
 		if (update == false) {
 			Company.create(tickerArray[0], function(err) {
 				if (err) {
-					console.log("line 452 err", err);
 					return res.status(500).json({
 						message: 'Error: ' + err
 					});
