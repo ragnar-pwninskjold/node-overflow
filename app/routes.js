@@ -43,7 +43,6 @@ module.exports = function(app, passport) {
 	//more passport things
 
 	app.get('/profile', isLoggedIn, function(req, res) {
-		console.log("req.user log test----------",req.user);
 		res.render('profile.ejs', {
 			user: req.user
 		});
