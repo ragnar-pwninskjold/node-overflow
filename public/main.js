@@ -173,7 +173,7 @@ function makePriceGraph(chart, obj) {
 			}]
 		},
 		options: {
-        responsive: false,
+        responsive: true,
         maintainAspectRatio: true
     }
 

@@ -153,3 +153,68 @@ input:focus {
     width: 100px;
 }
 
+@media (max-width: 1000px) {
+   #short, #address, #url, #left-intros, #exchange-intro {
+	font-size: 15px ;
+   }
+
+   #builder-headings, #companyName {
+   	font-size: 18px;
+   }
+}
+
+@media (max-width: 900px) {
+   .container.intro {
+   	width: 15% !important;
+   }
+
+   .container.intro-2 {
+   	width: 55% !important;
+   }
+
+   .container.intro-3 {
+   	width: 30% !important;
+   }
+
+}
+
+@media (max-width: 745px) {
+   .container.intro {
+   	width: 15% !important;
+   }
+
+   .container.intro-2 {
+   	width: 63% !important;
+   }
+
+   .container.intro-3 {
+   	width: 20% !important;
+   }
+
+    #short, #address, #url, #left-intros, #exchange-intro {
+   		font-size: 12px ;
+    }
+
+	#builder-headings, #companyName {
+	  	font-size: 12px;
+	}
+
+}
+
+@media (max-width: 650px) {
+ 
+ .container.intro, .container.intro-2, .container.intro-3 {
+ 	width: 100% !important;
+ }
+
+}
+
+
+
+
+
+
+
+
+
+
