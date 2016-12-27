@@ -207,11 +207,94 @@ input:focus {
  	width: 100% !important;
  }
 
+ .table-data {
+ 	font-size: 10px;
+ }
+
+}
+
+@media (max-width: 575px) {
+
+ .table-data {
+ 	font-size: 10px;
+ 	padding: 0px;
+ }
+
+ .ePrice, .cPrice {
+ 	padding: 0px;
+ }
+
+ .row-headers {
+ 	font-size: 10px;
+ }
+
+.bs-select {
+	width: 45px;
+}
+
+}
+
+@media (max-width: 820px) {
+
+ .cPrice, .ePrice {
+ 	padding: 0px !important;
+ }
+
+#currentp, #actionp {
+	padding: 0px;
+}
+
+}
+
+@media (max-width: 720px) {
+
+ .table-data {
+ 	font-size: 10px;
+ }
+
+}
+
+@media (max-width: 505px) {
+
+ .eDate {
+ 	padding-left: 0px !important;
+ }
+
+ .company {
+ 	padding-left: 5px !important;
+ }
+
+ .execute {
+ 	padding-left: 0px !important;
+ }
+
+ #execute-header {
+ 	padding-left: 0px !important;
+ }
+
+}
+
+@media (max-width: 520px) {
+
+.eDate {
+	padding-left: 0px !important;
+	padding-right: 0px !important;
 }
 
 
+}
 
+@media (max-width: 480px) {
 
+.table-data {
+	font-size: 8px !important;
+}
+
+.app .table tr td, .app .table tr th {
+     padding: 0px !important;
+}
+
+}
 
 
 

@@ -112,7 +112,7 @@ module.exports = function(app, passport) {
 					var mongoDate = data.updatedAt;
 					diff = currentTime - mongoDate;
 
-					if (diff > 2400000) { //if its been 40 minutes
+					if (diff > 300000) { //if its been 5 minutes
 						thisCompany = [];
 						thisCompany[0] = {};
 						thisCompany[0].name = tickArray[0].company; //this will be updated with name and ticker from above
