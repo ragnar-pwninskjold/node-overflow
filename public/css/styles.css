@@ -18086,8 +18086,8 @@ body .fc {
 }
 /*
 Acceptable font-family overrides for individual icons:
-	"Arial", sans-serif
-	"Times New Roman", serif
+  "Arial", sans-serif
+  "Times New Roman", serif
 
 NOTE: use percentage font sizes or else old IE chokes
 */
@@ -18359,7 +18359,7 @@ hr.fc-divider {
 }
 .fc-row table {
   /* don't put left/right border on anything within a fake row.
-	   the outer tbody will worry about this */
+     the outer tbody will worry about this */
   border-left: 0 hidden transparent;
   border-right: 0 hidden transparent;
   /* no bottom borders on rows */
@@ -18861,8 +18861,8 @@ a.fc-more:hover {
   filter: alpha(opacity=30);
   /* for IE */
   /* opacity with small font can sometimes look too faded
-	   might want to set the 'color' property instead
-	   making day-numbers bold also fixes the problem */
+     might want to set the 'color' property instead
+     making day-numbers bold also fixes the problem */
 }
 /* AgendaView all-day area
 --------------------------------------------------------------------------------------------------*/
@@ -22133,7 +22133,7 @@ body a:hover {
   height: 40px;
   line-height: 40px;
   color: #454545;
-  content: "\e853";
+  content: "\e86f";
   font-family: 'linearicons';
   text-align: center;
   color: #7F8FA4;
@@ -26713,7 +26713,7 @@ input[type="file"] {
   bottom: -5px;
 }
 .popover.bottom > .arrow {
-  margin-left: -5px;
+  margin-left: -36px;
   top: -6px;
 }
 .popover.bottom > .arrow:after {
@@ -30649,3 +30649,28 @@ input[type="file"] {
 .sum {
   margin-bottom: 50px;
 }
+
+.popover-title, .popover-content {
+  font-size: 1rem;
+}
+
+.popover {
+  width: 175px;
+  left: -45.289062px;
+}
+
+.popover-title {
+  padding: 2px 15px !important;
+}
+
+.popover-content {
+  padding: 7px !important;
+}
+
+.active div.popover {
+  left: -25px !important;
+}
+
+
+
+

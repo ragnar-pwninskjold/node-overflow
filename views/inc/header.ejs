@@ -23,8 +23,8 @@
                  <!-- START APP HEADER -->
                     <div class="app-header">
                         <ul class="app-header-buttons">
-                            <li><a href="/profile">Profile</a></li>
-                            <li class="active"><a href="/builder">Builder <span class="sr-only">(current)</span></a></li>
+                            <li><a href="/profile"><button type="button" class="btn btn-default btn-icon"><span class="icon-user"></span></button></a></li>
+                            <li class="active"><a href="/builder" data-toggle="popover" title="Builder Page" data-content="Click here to add new stocks to your portfolio" data-trigger="hover" data-placement="bottom"><button type="button" class="btn btn-default btn-icon"><span class="icon-pencil"></span></button></a></li>
                         </ul>
                         <form class="app-header-search">        
                             <input type="text" name="keyword" placeholder="Search" id="searchBox">
@@ -33,7 +33,7 @@
                         <ul class="app-header-buttons pull-right">
                             <li>
 
-                          <div class="buying"> <button name="buy-button" id="buy-button">Buy this stock</button></div>
+                          <div class="buying"> <a href="#" data-toggle="popover" title="Buy Button" data-content="Click here to input share volume and purchase this stock" data-trigger="hover" data-placement="bottom"><button name="buy-button" id="buy-button">Buy this stock</button></a></div>
         
                                
                                     <div class="contact-controls">

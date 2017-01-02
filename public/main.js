@@ -5,7 +5,10 @@ var ticker;
 var ratios;
 var news;
 if (window.location.pathname == "/builder") {
+
 $(document).ready(function() {
+
+$('[data-toggle="popover"]').popover(); 
 
 $.get('/api/apple', function(data) {
 				name = data.name;

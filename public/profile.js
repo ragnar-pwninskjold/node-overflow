@@ -11,6 +11,11 @@ if (window.location.pathname == "/profile") {
 
 $(document).ready(function() {
 
+$('[data-toggle="popover"]').popover(); 
+
+$("#buy-button").hide();
+$(".app-header-search").hide();
+
 $.get('/sectorvalue', function(data) {
 
 	sectors = data;
