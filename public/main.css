@@ -296,6 +296,16 @@ input:focus {
 
 }
 
+#buy-button {
+	border-radius: 8px;
+    background-color: white;
+    color: grey;
+}
+
+#buy-button:hover {
+    background-color: grey;
+    color: white;
+}
 
 
 
