@@ -72,7 +72,6 @@ $.get('/api/apple', function(data) {
 					alert("Sorry, that couldn't be found. Try another search please");
 					return;
 				}
-				console.log(data);
 				name = data.name;
 				price = data.price;
 				ticker = data.ticker;
@@ -131,13 +130,15 @@ $.get('/api/apple', function(data) {
 	$("#buy-button").on("click", function() {
 		var amount = prompt("How many shares?");
 	
-		if (amount != 0 || null) {
-			$.post('/positions/buy', {company: name, amount: amount}, function(data, status) {
-				if (data == "negative-balance") {
-					alert("Sorry, you don't have enough cash for that");
-					return;
-				}
-			});
+		if (amount != 0) {
+			if (amount != null) {
+				$.post('/positions/buy', {company: name, amount: amount}, function(data, status) {
+					if (data == "negative-balance") {
+						alert("Sorry, you don't have enough cash for that");
+						return;
+					}
+				});
+			}
 		}
 	});
 
