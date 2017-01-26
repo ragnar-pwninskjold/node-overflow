@@ -1,4 +1,6 @@
 <% include inc/header %>
+
+                    <div id="hidden-variable" style="display:none" data-foo="<%- data%>""></div>
                     
     
                     
@@ -98,6 +100,7 @@
                                     <div class="block-content">
                                         <div class="app-chart-wrapper app-chart-with-axis">
                                            <div id='portfolio-chart'>
+                                           <div class="loader"></div>
                                             <canvas id='portfolioperformance'></canvas>
                                           </div>
                                         </div>
@@ -121,6 +124,7 @@
                                     <div class="block-content">
                                         <div class="app-chart-wrapper app-chart-with-axis">
                                            <div id='breakdown-chart'>
+                                           <div class="loader"></div>
                                             <canvas id='breakdown'></canvas>
                                           </div>
                                         </div>
@@ -144,6 +148,7 @@
                                     <div class="block-content">
                                         <div class="app-chart-wrapper app-chart-with-axis">
                                            <div id='sector-chart'>
+                                           <div class="loader"></div>
                                             <canvas id='sectorperformance'></canvas>
                                           </div>
                                         </div>

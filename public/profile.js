@@ -11,6 +11,7 @@ if (window.location.pathname == "/profile") {
 
 $(document).ready(function() {
 
+
 $('[data-toggle="popover"]').popover(); 
 
 $("#buy-button").hide();
@@ -21,7 +22,7 @@ $.get('/sectorvalue', function(data) {
 	sectors = data;
 });
 
-$.get('/companies', function(data) {
+$.get('/companies', function(data) { 
 	
 	companies = data;
 });
@@ -92,16 +93,18 @@ $.get('/positions', function(data) {
 	});	
 
 	
-	var sectorchart = $("#breakdown");
-	makeSectorPie(trueSectors, totalsArray, sectorchart, "pie");
-	var companieschart = $("#sectorperformance");
-	makeSectorPie(trueCompanies, companiesArray, companieschart, "doughnut");
+
 
 	var barChart = function () {
 		currentCompany++;
 		if (currentCompany == trueCompanies.length) {
+			$(".loader").hide();
 			var performanceChart = $("#portfolioperformance");
 			makeBar(trueCompanies, changeArray, performanceChart, "bar");
+			var sectorchart = $("#breakdown");
+			makeSectorPie(trueSectors, totalsArray, sectorchart, "pie");
+			var companieschart = $("#sectorperformance");
+			makeSectorPie(trueCompanies, companiesArray, companieschart, "doughnut");
 		}
 	};
 
